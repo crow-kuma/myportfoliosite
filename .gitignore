@@ -1,0 +1,22 @@
+# === 共通除外ファイル ===
+.DS_Store
+*.log
+*.pem
+*.local
+*.tsbuildinfo
+
+# === Sanity & Astro 共通ディレクトリ除外 ===
+**/node_modules/
+**/dist/
+**/.pnp
+**/.pnp.js
+**/.sanity
+**/logs/
+**/coverage/
+**/.astro/
+**/.idea/
+
+# === 環境変数ファイル ===
+**/.env
+**/.env.production
+
