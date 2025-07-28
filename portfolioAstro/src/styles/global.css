@@ -4,10 +4,10 @@ html {
 
 body {
   font-family: "Hiragino maru Gothic ProN W4", "Hiragino Kaku Gothic Pro",
-    "Hiragino Sans", "arial", "Meiryo", "MS PGothic", sans-serif!important;
+    "Hiragino Sans", "arial", "Meiryo", "MS PGothic", sans-serif !important;
 }
 
-body, h1, h3, h4, h5, h6, p {
+body, h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 }
 

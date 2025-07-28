@@ -3,22 +3,24 @@ import type { SanityDocument } from "@sanity/client";
 import { sanityClient } from "sanity:client";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import { PortableText } from "astro-portabletext";
-import { Image } from "astro:assets";
-import SignatureImage from "../images/signature-white.png";
 
 import BaseLayout from "../layouts/BaseLayout.astro";
 import NewsBox from "../components/NewsBox.astro";
 
 const ARTWORK_QUERY = `*[_type == "artwork" && topPage == true]`;
-const artwork = await sanityClient.fetch<SanityDocument[]>(ARTWORK_QUERY);
+const artwork = await sanityClient
+  .fetch<SanityDocument[]>(ARTWORK_QUERY)
+  .catch(() => []);
 
 const { projectId, dataset } = sanityClient.config();
 const urlFor = (source: SanityImageSource) =>
   projectId && dataset
     ? imageUrlBuilder({ projectId, dataset }).image(source)
     : null;
-const artworkImageUrl = artwork.map((artwork) => urlFor(artwork.image)?.url());
+const artworkImageUrl = artwork
+  .filter((art) => art.image)
+  .map((artwork) => urlFor(artwork.image)?.url())
+  .filter((url): url is string => url !== null && url !== undefined);
 
 const durationPerSlide = 12;
 const totalDuration = artworkImageUrl.length * durationPerSlide;

@@ -136,7 +136,7 @@
    overflow: hidden;
    position: absolute;
    white-space: nowrap;
-   content: "test"
+   content: ""
  }
  
  :where(s)::before {
@@ -273,6 +273,7 @@
  * and backdrops
  */
 :where(dialog)::backdrop {
+  background: rgba(0,0,0,.3);
   background: oklch(0% 0 0 / 0.3);
 }
 

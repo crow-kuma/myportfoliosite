@@ -8,7 +8,7 @@ export const newsType = defineType({
     defineField({
       name: 'date',
       type: 'date',
-      initialValue: () => new Date().toISOString().split('T')[0],
+      initialValue: new Date().toISOString().slice(0, 10),
     }),
     defineField({
       name: 'article',
