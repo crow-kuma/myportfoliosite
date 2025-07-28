@@ -1,16 +1,127 @@
 ---
+import type { SanityDocument } from "@sanity/client";
+import { sanityClient } from "sanity:client";
+import imageUrlBuilder from "@sanity/image-url";
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { PortableText } from "astro-portabletext";
+import { Image } from "astro:assets";
+import SignatureImage from "../images/signature-white.png";
 
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NewsBox from "../components/NewsBox.astro";
+
+const ARTWORK_QUERY = `*[_type == "artwork" && topPage == true]`;
+const artwork = await sanityClient.fetch<SanityDocument[]>(ARTWORK_QUERY);
+
+const { projectId, dataset } = sanityClient.config();
+const urlFor = (source: SanityImageSource) =>
+  projectId && dataset
+    ? imageUrlBuilder({ projectId, dataset }).image(source)
+    : null;
+const artworkImageUrl = artwork.map((artwork) => urlFor(artwork.image)?.url());
+
+const durationPerSlide = 12;
+const totalDuration = artworkImageUrl.length * durationPerSlide;
+
+const pageTitle = "Kumano Crow";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+  <div class="background-slideshow">
+    {
+      artworkImageUrl &&
+        artworkImageUrl.map((img, index) => (
+          <div
+            class={`slide slide${index + 1}`}
+            style={`
+            background-image: url('${img}');
+            animation: fade ${totalDuration}s ${index * durationPerSlide}s infinite;
+          `}
+          />
+        ))
+    }
+    <div class="content">
+      <div class="heading-box">
+        <h1 class="title-font">Kumano Crow</h1>
+      </div>
+      <NewsBox />
+    </div>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  html,
+  body {
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .background-slideshow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    display: flex;
+  }
+
+  .background-slideshow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2; /* .slideより上、.contentより下に調整 */
+    background-image: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.3) 1px,
+        transparent 1px
+      ),
+      radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+    background-position:
+      0 0,
+      2.5px 5px;
+    background-size: 5px 10px;
+  }
+  .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    8% {
+      opacity: 1;
+    }
+    45% {
+      opacity: 1;
+    }
+    55% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .content {
+    padding-top: 42px;
+    z-index: 3; /* 背景より前面（スライドのz-index:1やデフォルトより上に） */
+  }
+
+  .heading-box {
+    margin: auto;
+  }
+  .heading-box h1 {
+    margin-top: 32px;
+    font-size: 4rem;
+  }
+</style>

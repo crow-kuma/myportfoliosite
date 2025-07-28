@@ -1,0 +1,110 @@
+---
+
+---
+
+<nav class="navigation flex-center">
+  <div class="site-name">
+    <a href="/"><h1 class="title-font">Kumano Crow</h1></a>
+  </div>
+  <ul class="menu flex-center">
+    <li>
+      <a href="/about" data-tooltip="熊野クロウについて">About Crow</a>
+    </li>
+    <li>
+      <a href="/works" data-tooltip="お仕事情報">Works</a>
+    </li>
+    <li>
+      <a href="/contact" data-tooltip="ご連絡情報">Contact</a>
+    </li>
+    <li>
+      <a href="/misc" data-tooltip="その他おたのしみ">Misc</a>
+    </li>
+  </ul>
+</nav>
+
+<style>
+  .navigation {
+    position: relative;
+    justify-content: space-between;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 10;
+  }
+  .site-name {
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding-left: 10px;
+  }
+  .site-name h1 {
+    padding-left: 10px;
+    line-height: 1em;
+    font-size: 1.5em !important;
+  }
+  .menu {
+    align-items: center;
+  }
+  .menu li {
+    width: 160px;
+    display: flex;
+    position: relative;
+  }
+  .menu li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1.5rem;
+    width: 1px;
+    background-color: #ccc;
+  }
+
+  .menu a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    line-height: 3rem;
+  }
+
+  .menu a::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 129%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 20;
+  }
+
+  .menu a::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent rgba(255, 255, 255, 0.8) transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 20;
+  }
+
+  .menu a:hover::after,
+  .menu a:hover::before {
+    opacity: 1;
+    visibility: visible;
+  }
+</style>
