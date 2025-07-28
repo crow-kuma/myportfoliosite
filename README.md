@@ -6,6 +6,7 @@ This is a personal illustration portfolio site powered by **Astro**, **react**, 
 
 ## 📁 Project Structure
 
+```
 portfolio/
 ├── portfolioAstro/ # Frontend (Astro + react)
 ├── portfolioSanity/ # CMS backend (Sanity Studio)
@@ -13,6 +14,7 @@ portfolio/
 │ └── run.sh # Script to run both Astro and Sanity dev servers
 ├── .gitignore
 └── README.md
+```
 
 ---
 
