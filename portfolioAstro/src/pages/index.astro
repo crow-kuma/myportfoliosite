@@ -121,9 +121,35 @@ const pageTitle = "Kumano Crow";
 
   .heading-box {
     margin: auto;
+    transform-origin: left;
   }
   .heading-box h1 {
     margin-top: 32px;
     font-size: 4rem;
   }
+
+  .heading-box.is-active {
+    animation: shrink 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  @keyframes shrink {
+    0% {
+      opacity: 0;
+      transform: translateX(20vw) scaleX(1) scaleY(1) skew(-60deg);
+    }
+    10% {
+      opacity: 1;
+    }
+    80% {
+      transform: scaleX(0.3) scaleY(1.2);
+    }
+    100% {
+      transform: scaleX(1) scaleY(1);
+    }
+  }
 </style>
+
+<script>
+  const text = document.querySelector(".heading-box");
+  text?.classList.add("is-active");
+</script>
