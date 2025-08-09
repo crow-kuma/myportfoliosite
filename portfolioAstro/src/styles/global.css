@@ -40,7 +40,7 @@ li {
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 16px;
+  gap: 16px;
 }
 
 .title-font {
@@ -62,9 +62,7 @@ li {
 }
 
 .page-title {
-  font-size: 2em;
   display: inline;
-  padding: 8px 16px;
   position: relative;
   margin-bottom: 0.2rem;
   padding: 1rem;
