@@ -5,61 +5,79 @@ const pageTitle = "熊野クロウについて";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <div class="about-box">
-    <h3>熊野クロウについて</h3>
-    <div class="illust-box">
-      <h4>イラストの経歴</h4>
-      <p>
-        2015年頃よりイラストレーターとして活動開始。NBA雑誌月刊HOOP寄稿、バスケTシャツ展など。
-      </p>
-      <p>
-        2018年
-        イラストを描くことをやめていた時期だったが、桜花賞のテレビ中継を見てアーモンドアイに衝撃を受け、再び筆をとる。ステイゴールド一族に魅了される。
-      </p>
-      <p>2019年 メロディーレーンに出会う。</p>
-      <p>2020年 「今日のメロちゃん」シリーズ開始。タイトルホルダーに出会う。</p>
-      <p>
-        2021年〜
-        メロディーレーンメンコ、タイトルホルダー菊花賞勝利記念品等にイラスト提供
-      </p>
-      <p>お仕事のご依頼は<a href="/contact">こちらをご覧ください</a></p>
+  <div class="about-box content">
+    <div class="title-box">
+      <h3 class="page-title">熊野クロウについて</h3>
     </div>
-    <div class="engineer-box">
-      <h4>エンジニアの経歴</h4>
+    <section class="illust-box mb-24">
+      <div class="subtitle-box">
+        <h4 class="section-title">イラストの経歴</h4>
+      </div>
+      <div class="section-paragraph">
+        <p>
+          2015年頃よりイラストレーターとして活動開始。NBA雑誌月刊HOOP寄稿、バスケTシャツ展など。
+        </p>
+        <p>
+          2018年
+          イラストを描くことをやめていた時期に桜花賞のテレビ中継を見てアーモンドアイに衝撃を受け、再び筆をとる。ステイゴールド一族に魅了される。
+        </p>
+        <p>2019年 メロディーレーンに出会う。</p>
+        <p>
+          2020年 「今日のメロちゃん」シリーズ開始。タイトルホルダーに出会う。
+        </p>
+        <p>
+          2021年〜
+          メロディーレーンメンコ、タイトルホルダー菊花賞勝利記念品等にイラスト提供
+        </p>
+        <p>
+          お仕事のご依頼は
+          <a href="/contact" class="decorated-link"
+            >ご連絡情報ページをご覧ください</a
+          >
+        </p>
+      </div>
+    </section>
+    <section class="engineer-box">
+      <div class="subtitle-box">
+        <h4 class="section-title">エンジニアの経歴</h4>
+      </div>
       <p>
         HTML,
-        CSS等を海外の学習サイトを利用して学び始め、友人のwebサイト構築などを担当。<br
-        />
-        UXデザイン等フロントエンド方面が得意分野。<br />
-        MOOC(edX, Coursera等)を利用して勉強継続中。<br />
-        一応日米バイリンガルなので、tech系イベントLiveやハーバード大CS50の最新版を見て日々情報収集をしています。
+        CSS等を海外の学習サイトを利用して学び始め、友人のwebサイト構築などを担当。
       </p>
-      <p>コーダー歴: 1年, フルスタックエンジニア: 2年(継続中)</p>
-      <div class="experience-box">
+      <p>UXデザイン等フロントエンド方面が得意分野。</p>
+      <p>MOOC(edX, Coursera等)を利用して勉強継続中。</p>
+      <p>
+        一応日米バイリンガルなので、tech系イベントLiveやCS50等米大学の講義を見て日々情報収集をしています。
+      </p>
+    </section>
+    <p>コーダー: 1年, フルスタックエンジニア: 2年(継続中)</p>
+    <div class="grid-3">
+      <div class="experience-box card col-3-1">
         <h5>経験したこと</h5>
         <ul>
           <li>HTML5</li>
           <li>CSS3</li>
           <li>JavaScript</li>
           <li>jQuery</li>
-          <li>bootstrap</li>
+          <li>Bootstrap</li>
           <li>React</li>
           <li>Java</li>
-          <li>postgresql</li>
+          <li>PostgreSQL</li>
           <li>WordPress</li>
         </ul>
       </div>
-      <div class="certification-box">
+      <div class="certification-box card col-3-1">
         <h5>取得資格</h5>
         <ul>
           <li>国連英検B級,C級(C級成績優秀者)</li>
           <li>英検準一級</li>
-          <li>TOEIC L&R: 970点(リスニングは満点)</li>
+          <li>TOEIC L&R: 970点(L満点)</li>
           <li>基本情報技術者試験</li>
           <li>Next up: 色彩検定, PM系資格, Java関連資格受験を検討中</li>
         </ul>
       </div>
-      <div class="tech-stack-box">
+      <div class="tech-stack-box card col-3-1">
         <h5>本サイト技術スタック</h5>
         <ul>
           <li>Astro</li>
@@ -70,3 +88,17 @@ const pageTitle = "熊野クロウについて";
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  .about-box {
+    margin-bottom: 36px;
+  }
+
+  .about-box .page-title {
+    background-color: #fcefb1;
+  }
+
+  .card {
+    background-color: #fdf5ce;
+  }
+</style>
