@@ -1,5 +1,13 @@
+:root {
+  --black: #000;
+  --white: #fff;
+  --yellow: #fdd835;
+  --light-yellow: #fcefb1;
+}
+
 html {
   font-size: 14px;
+  color: var(--black);
 }
 
 body {
@@ -13,7 +21,7 @@ body, h1, h2, h3, h4, h5, h6, p {
 
 a {
   text-decoration: none;
-  color: #000;
+  color: var(--black);
 }
 
 ul {
@@ -23,6 +31,16 @@ ul {
 
 li {
   list-style: none;
+}
+
+.mb-24 {
+  margin-bottom: 24px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 16px;
 }
 
 .title-font {
@@ -41,4 +59,60 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.page-title {
+  font-size: 2em;
+  display: inline;
+  padding: 8px 16px;
+  position: relative;
+  margin-bottom: 0.2rem;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 26px;
+  text-align: center;
+}
+
+ .page-title:before {
+    position: absolute;
+    inset: -5px 5px 5px -5px;
+    border: 1px solid #353535;
+    content: "";
+  }
+
+.title-box {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+.section-title {
+  font-size: 1.4em;
+  display: inline;
+  border: solid 1px var(--black);
+  border-bottom: 0;
+  padding: 4px 8px;
+}
+
+.section-paragraph {
+  padding: 8px;
+  border-left: solid 1px var(--black);
+  border-top: solid 1px var(--black);
+}
+
+.decorated-link {
+  text-decoration: underline dotted;
+}
+
+.card {
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin-top : 24px;
+}
+
+.card > h5 {
+  font-size: 1.4em;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--black);
 }

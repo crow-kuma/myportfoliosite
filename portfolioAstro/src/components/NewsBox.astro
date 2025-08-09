@@ -8,7 +8,7 @@ const news = await sanityClient.fetch<SanityDocument[]>(NEWS_QUERY);
 ---
 
 <div class="news-box">
-  <div class="title-box">
+  <div class="title-tab">
     <h3>News</h3>
   </div>
   <ul>
@@ -54,11 +54,11 @@ const news = await sanityClient.fetch<SanityDocument[]>(NEWS_QUERY);
       border-bottom: none;
     }
 
-    .title-box {
+    .title-tab {
       margin-left: 20px;
     }
 
-    .title-box > h3 {
+    .title-tab > h3 {
       display: inline-block;
       background-color: #fdd835;
       padding: 2px 16px;
