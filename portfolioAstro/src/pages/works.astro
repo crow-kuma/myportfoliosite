@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageTitle from "../components/PageTitle.astro";
+import MyLightGallery from "../components/MyLightGallery.tsx";
+import { sanityClient } from "sanity:client";
+import type { SanityDocument } from "@sanity/client";
+import { createImageUrlBuilder } from "@sanity/image-url";
+import type { SanityImageSource } from "@sanity/image-url";
+
+const pageTitle = "作品・お仕事情報";
+
+// Fetch all artworks that have an image defined
+const ARTWORK_QUERY = `*[_type == "artwork"]`;
+
+const artwork = await sanityClient
+  .fetch<SanityDocument[]>(ARTWORK_QUERY)
+  .catch(() => []);
+
+const { projectId, dataset } = sanityClient.config();
+
+const urlFor = (source: SanityImageSource) =>
+  projectId && dataset
+    ? createImageUrlBuilder({ projectId, dataset }).image(source)
+    : null;
+
+const imageInfo = artwork
+  .map((image) => {
+    const url = urlFor(image.image)?.url();
+    // Skip images that don't have a valid URL
+    if (!url) return null;
+
+    return {
+      id: image._id, // Use the correct unique ID from Sanity
+      url: url,
+      title: image.title || "Artwork", // Provide a fallback for alt text
+      description: image.description || "",
+      date: image.date || "",
+    };
+  })
+  .filter(Boolean) as {
+  id: string;
+  url: string;
+  title: string;
+  description: string;
+  date: string;
+}[]; // This clever trick removes all `null` entries
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <div class="works-box content mb-36">
+    <PageTitle pageTitle={pageTitle} className="bg-light-blue" />
+    <MyLightGallery imageInfo={imageInfo} client:load />
+  </div>
+</BaseLayout>

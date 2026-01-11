@@ -1,8 +1,8 @@
 ---
 import type { SanityDocument } from "@sanity/client";
 import { sanityClient } from "sanity:client";
-import imageUrlBuilder from "@sanity/image-url";
-import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { createImageUrlBuilder } from "@sanity/image-url";
+import type { SanityImageSource } from "@sanity/image-url";
 
 import BaseLayout from "../layouts/BaseLayout.astro";
 import NewsBox from "../components/NewsBox.astro";
@@ -15,7 +15,7 @@ const artwork = await sanityClient
 const { projectId, dataset } = sanityClient.config();
 const urlFor = (source: SanityImageSource) =>
   projectId && dataset
-    ? imageUrlBuilder({ projectId, dataset }).image(source)
+    ? createImageUrlBuilder({ projectId, dataset }).image(source)
     : null;
 const artworkImageUrl = artwork
   .filter((art) => art.image)
@@ -75,11 +75,8 @@ const pageTitle = "Kumano Crow";
     inset: 0;
     pointer-events: none;
     z-index: 2; /* .slideより上、.contentより下に調整 */
-    background-image: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0.3) 1px,
-        transparent 1px
-      ),
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
       radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
     background-position:
       0 0,

@@ -3,6 +3,8 @@
   --white: #fff;
   --yellow: #fdd835;
   --light-yellow: #fcefb1;
+  --light-blue: #47d1ff;
+  --pale-light-blue: #ccf2ff;
 }
 
 html {
@@ -36,6 +38,18 @@ li {
 .mb-24 {
   margin-bottom: 24px;
 }
+.mb-36 {
+  margin-bottom: 36px;
+}
+
+.bg-light-yellow {
+  background-color: var(--light-yellow);
+}
+
+.bg-light-blue {
+  background-color: var(--pale-light-blue);
+}
+
 
 .grid-3 {
   display: grid;
@@ -113,4 +127,29 @@ li {
   padding-bottom: 4px;
   margin-bottom: 4px;
   border-bottom: solid 1px var(--black);
+}
+
+.thumbnail-grid {
+  display: grid;
+  /* Creates a responsive grid that fills the space with columns of at least 200px */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.thumbnail-grid a {
+  display: block;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.thumbnail-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease-in-out;
+}
+
+.thumbnail-grid a:hover img {
+  transform: scale(1.05);
 }

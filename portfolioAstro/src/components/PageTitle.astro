@@ -1,0 +1,7 @@
+---
+const { pageTitle, className } = Astro.props;
+---
+
+<div class="title-box">
+  <h3 class:list={["page-title", className]}>{pageTitle}</h3>
+</div>
