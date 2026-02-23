@@ -6,11 +6,12 @@ import { sanityClient } from "sanity:client";
 import type { SanityDocument } from "@sanity/client";
 import { createImageUrlBuilder } from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url";
+import NewsBox from "../components/NewsBox.astro";
 
 const pageTitle = "作品・お仕事情報";
 
 // Fetch all artworks that have an image defined
-const ARTWORK_QUERY = `*[_type == "artwork"]`;
+const ARTWORK_QUERY = `*[_type == "artwork"] | order(date desc)`;
 
 const artwork = await sanityClient
   .fetch<SanityDocument[]>(ARTWORK_QUERY)
@@ -50,5 +51,6 @@ const imageInfo = artwork
   <div class="works-box content mb-36">
     <PageTitle pageTitle={pageTitle} className="bg-light-blue" />
     <MyLightGallery imageInfo={imageInfo} client:load />
+    <NewsBox />
   </div>
 </BaseLayout>
