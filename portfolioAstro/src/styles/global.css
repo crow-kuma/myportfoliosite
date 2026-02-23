@@ -131,9 +131,9 @@ li {
 
 .thumbnail-grid {
   display: grid;
-  /* Creates a responsive grid that fills the space with columns of at least 200px */
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
+  margin: 0 16px 16px 16px;
 }
 
 .thumbnail-grid a {

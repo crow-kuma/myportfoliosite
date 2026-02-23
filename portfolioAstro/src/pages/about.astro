@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageTitle from "../components/PageTitle.astro";
 import Card from "../components/Card.astro";
+import Article from "../components/Article.astro";
 
 const pageTitle = "熊野クロウについて";
 
@@ -23,7 +24,7 @@ const certificationContent = [
   "TOEIC L&R: 970点(L満点)",
   "基本情報技術者試験",
   "色彩検定2級",
-  "Next up: PM系資格, Java関連資格受験を検討中",
+  "Next up: PM系資格受験を検討中",
 ];
 
 const techStackContent = ["Astro", "Sanity", "React"];
@@ -32,85 +33,80 @@ const techStackContent = ["Astro", "Sanity", "React"];
 <BaseLayout pageTitle={pageTitle}>
   <div class="about-box content mb-36">
     <PageTitle pageTitle={pageTitle} className="bg-light-yellow" />
-    <section class="illust-box mb-24">
-      <div class="subtitle-box">
-        <h4 class="section-title">イラストの経歴</h4>
+    <Article title="イラストの経歴" className="illust-box">
+      <p>
+        2015年頃よりイラストレーターとして活動開始。NBA雑誌月刊HOOP寄稿、バスケTシャツ展など。
+      </p>
+      <p>
+        2018年
+        イラストを描くことをやめていた時期に桜花賞のテレビ中継を見てアーモンドアイに衝撃を受け、再び筆をとる。ステイゴールド一族に魅了される。
+      </p>
+      <p>2019年 メロディーレーンに出会う。</p>
+      <p>2020年 「今日のメロちゃん」シリーズ開始。タイトルホルダーに出会う。</p>
+      <p>
+        2021年〜
+        メロディーレーンメンコ、タイトルホルダー菊花賞勝利記念品等にイラスト提供
+      </p>
+      <p>
+        その他競馬関係者の方にご依頼いただくなどして、イラスト提供をしています。
+      </p>
+      <p>
+        お仕事のご依頼は
+        <a href="/contact" class="decorated-link"
+          >ご連絡情報ページをご覧ください</a
+        >
+      </p>
+    </Article>
+    <Article title="エンジニアの経歴" className="engineer-box">
+      <p>
+        HTML,
+        CSS等を海外の学習サイトを利用して学び始め、友人のwebサイト構築などを担当。
+      </p>
+      <p>
+        大学で情報コースマルチメディア系に所属し、心理学とwebアクセシビリティについて学ぶ。
+      </p>
+      <p>
+        事務の仕事ではGAS,
+        VBAを利用したマクロや、Pythonで簡単な業務アプリを作成。
+      </p>
+      <p>フルスタックエンジニアとしてチームでの開発を経験。</p>
+      <p>業務改善や効率化に興味あり。</p>
+      <p>UXデザイン等フロントエンド方面が得意分野。</p>
+      <p>MOOC(edX, Coursera)やUdemy等を利用して勉強継続中。</p>
+      <p>
+        一応日米バイリンガルなので、tech系イベントLiveやCS50等米大学の講義を見て日々情報収集をしています。
+      </p>
+      <p>
+        コーダー: 1年, フルスタックエンジニア: 2年,
+        その他業務委託等で合計5年ほど
+      </p>
+      <div class="grid-3">
+        <Card
+          className="bg-light-yellow col-3-1"
+          cardTitle="経験した技術"
+          listContent={experienceContent}
+        />
+        <Card
+          className="bg-light-yellow col-3-1"
+          cardTitle="取得資格"
+          listContent={certificationContent}
+        />
+        <Card
+          className="bg-light-yellow col-3-1"
+          cardTitle="本サイト技術スタック"
+          listContent={techStackContent}
+        />
       </div>
-      <div class="section-paragraph">
-        <p>
-          2015年頃よりイラストレーターとして活動開始。NBA雑誌月刊HOOP寄稿、バスケTシャツ展など。
-        </p>
-        <p>
-          2018年
-          イラストを描くことをやめていた時期に桜花賞のテレビ中継を見てアーモンドアイに衝撃を受け、再び筆をとる。ステイゴールド一族に魅了される。
-        </p>
-        <p>2019年 メロディーレーンに出会う。</p>
-        <p>
-          2020年 「今日のメロちゃん」シリーズ開始。タイトルホルダーに出会う。
-        </p>
-        <p>
-          2021年〜
-          メロディーレーンメンコ、タイトルホルダー菊花賞勝利記念品等にイラスト提供
-        </p>
-        <p>
-          その他競馬関係者の方にご依頼いただくなどして、イラスト提供をしています。
-        </p>
-        <p>
-          お仕事のご依頼は
-          <a href="/contact" class="decorated-link"
-            >ご連絡情報ページをご覧ください</a
-          >
-        </p>
-      </div>
-    </section>
-    <section class="engineer-box mb-24">
-      <div class="subtitle-box">
-        <h4 class="section-title">エンジニアの経歴</h4>
-      </div>
-      <div class="section-paragraph">
-        <p>
-          HTML,
-          CSS等を海外の学習サイトを利用して学び始め、友人のwebサイト構築などを担当。
-        </p>
-        <p>UXデザイン等フロントエンド方面が得意分野。</p>
-        <p>MOOC(edX, Coursera等)を利用して勉強継続中。</p>
-        <p>
-          一応日米バイリンガルなので、tech系イベントLiveやCS50等米大学の講義を見て日々情報収集をしています。
-        </p>
-
-        <p>コーダー: 1年, フルスタックエンジニア: 2年(継続中)</p>
-        <div class="grid-3">
-          <Card
-            className="bg-light-yellow col-3-1"
-            cardTitle="経験した技術"
-            listContent={experienceContent}
-          />
-          <Card
-            className="bg-light-yellow col-3-1"
-            cardTitle="取得資格"
-            listContent={certificationContent}
-          />
-          <Card
-            className="bg-light-yellow col-3-1"
-            cardTitle="本サイト技術スタック"
-            listContent={techStackContent}
-          />
-        </div>
-      </div>
-    </section>
-    <section class="personal-box mb-24">
-      <div class="subtitle-box">
-        <h4 class="section-title">好きなもの</h4>
-      </div>
-      <div class="section-paragraph">
-        <p>
-          好きな馬はメロディーレーン＆タイトルホルダーきょうだい(シーガルワールドちゃんデビュー待機)
-        </p>
-        <p>
-          ステイゴールド一族、ドゥラメンテ＆産駒、アーモンドアイ＆産駒を応援しています。
-        </p>
-        <p>最近の好きなものは美術、小説、ゴジラ。</p>
-      </div>
-    </section>
+    </Article>
+    <Article title="好きなもの" className="personal-box">
+      <p>
+        好きな馬はメロディーレーン＆タイトルホルダーきょうだい(シーガルワールドちゃんデビュー待機)
+      </p>
+      <p>
+        ステイゴールド一族、ドゥラメンテ＆産駒、アーモンドアイ＆産駒を応援しています。
+      </p>
+      <p>Mind Your Biscuitsも好き。</p>
+      <p>最近の好きなものは美術、ミステリー小説、ゴジラ、編み物。</p>
+    </Article>
   </div>
 </BaseLayout>
