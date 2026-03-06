@@ -2,7 +2,7 @@
 
 # 🖼️ Portfolio Site (Astro + react + Sanity)
 
-This is a personal illustration portfolio site powered by **Astro**, **react**, and **Sanity** (Headless CMS), deployed via **Netlify**.
+This is a personal illustration portfolio site powered by **Astro**, **React**, and **Sanity** (Headless CMS).
 
 ## 📁 Project Structure
 
@@ -43,16 +43,15 @@ This runs:
 
 ## 🧠 Technologies Used
 
-- [Astro](https://astro.build/) – Static site generator for modern web.
-- [react](https://www.react.com/) – UI framework for client interactivity.
-- [Sanity](https://www.sanity.io/) – Headless CMS backend with live editor.
-- [Netlify](https://www.netlify.com/) – Deployment platform.
+- [Astro](https://astro.build/) (`^5.18.0`) – Static site generator for modern web.
+- [React](https://www.react.com/) (`^19.1.0`) – UI framework for client interactivity.
+- [Sanity](https://www.sanity.io/) (`^5.13.0` Studio, `^4.0.1` Client) – Headless CMS backend with live editor.
 
 ---
 
-## 📦 Build & Deploy (Astro only)
+## 📦 Build (Astro only)
 
-Astro is deployed to Netlify. To generate a production build locally:
+To generate a production build locally:
 
 cd portfolioAstro
 npm run build

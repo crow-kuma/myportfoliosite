@@ -1,0 +1,37 @@
+---
+interface Props {
+  title: string;
+  tabClass: string;
+  gridClass: string;
+  gridColumns?: number;
+}
+
+const { title, tabClass, gridClass, gridColumns = 4 } = Astro.props;
+---
+
+<section class="social-section mt-24">
+  <div class="title-tab">
+    <h3 class={tabClass}>{title}</h3>
+  </div>
+  <div class:list={["banner-grid", "p-24", gridClass]} style={`--grid-cols: ${gridColumns}`}>
+    <slot />
+  </div>
+</section>
+
+<style>
+  .banner-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+    gap: 30px;
+  }
+  @media (max-width: 1024px) {
+    .banner-grid {
+      grid-template-columns: repeat(min(var(--grid-cols), 2), 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .banner-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

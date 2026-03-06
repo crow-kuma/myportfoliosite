@@ -5,6 +5,8 @@
   --light-yellow: #fcefb1;
   --light-blue: #47d1ff;
   --pale-light-blue: #ccf2ff;
+  --light-pink: #ffcccc;
+  --pale-light-pink: #ffe6e6;
 }
 
 html {
@@ -35,6 +37,10 @@ li {
   list-style: none;
 }
 
+.mt-24 {
+  margin-top: 24px;
+}
+
 .mb-24 {
   margin-bottom: 24px;
 }
@@ -42,12 +48,28 @@ li {
   margin-bottom: 36px;
 }
 
+.p-24 {
+  padding: 24px;
+}
+
+.bg-yellow {
+  background-color: var(--yellow);
+}
+
 .bg-light-yellow {
   background-color: var(--light-yellow);
 }
 
-.bg-light-blue {
+.bg-pale-light-blue {
   background-color: var(--pale-light-blue);
+}
+
+.bg-light-pink {
+  background-color: var(--light-pink);
+}
+
+.bg-pale-light-pink {
+  background-color: var(--pale-light-pink);
 }
 
 
@@ -96,6 +118,15 @@ li {
   display: flex;
   justify-content: center;
   margin: 24px 0;
+}
+
+.title-tab > h3 {
+  display: inline-block;
+  padding: 2px 16px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-size: 1.6rem;
+  margin-bottom: 0;
 }
 
 .section-title {
