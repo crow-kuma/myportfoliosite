@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageTitle from "../components/PageTitle.astro";
+import SocialLinksSection from "../components/SocialLinksSection.astro";
+import SocialBanner from "../components/SocialBanner.astro";
+
+const pageTitle = "SNS・ご連絡情報";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <div class="contact-box content mb-36">
+    <PageTitle pageTitle={pageTitle} className="bg-pale-light-pink" />
+    <SocialLinksSection title="イラスト" tabClass="bg-light-pink" gridClass="bg-pale-light-pink" gridColumns={4}>
+      <SocialBanner
+        href="https://x.com/shirokumanocrow"
+        src="/images/social/x_banner.svg"
+        alt="X Logo"
+        label="X (Twitter)"
+      />
+      <SocialBanner
+        href="https://www.instagram.com/crow_k/"
+        src="/images/social/instagram_banner.svg"
+        alt="Instagram Logo"
+        label="Instagram"
+      />
+      <SocialBanner
+        href="https://www.threads.com/@crow_k"
+        src="/images/social/threads_banner.svg"
+        alt="Threads Logo"
+        label="Threads"
+      />
+      <SocialBanner
+        href="https://www.youtube.com/@crow_k"
+        src="/images/social/youtube_banner.svg"
+        alt="YouTube Logo"
+        label="YouTube"
+      />
+    </SocialLinksSection>
+
+    <SocialLinksSection title="Tech" tabClass="bg-light-pink" gridClass="bg-pale-light-pink" gridColumns={4}>
+      <SocialBanner
+        href="https://github.com/crow-kuma"
+        src="/images/social/github_banner.svg"
+        alt="GitHub Logo"
+        label="GitHub"
+      />
+    </SocialLinksSection>
+  </div>
+</BaseLayout>
+
+<style>
+  .contact-box {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+</style>

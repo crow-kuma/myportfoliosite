@@ -1,0 +1,41 @@
+---
+interface Props {
+  href: string;
+  src: string;
+  alt: string;
+  label: string;
+}
+
+const { href, src, alt, label } = Astro.props;
+---
+
+<a href={href} target="_blank" class="banner-link" aria-label={label}>
+  <img src={src} alt={alt} />
+  <span>{label}</span>
+</a>
+
+<style>
+  .banner-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    gap: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+  }
+  .banner-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+  .banner-link img {
+    height: 32px;
+    width: auto;
+  }
+</style>
