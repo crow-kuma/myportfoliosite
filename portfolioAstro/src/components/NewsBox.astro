@@ -38,7 +38,6 @@ const news = await sanityClient.fetch<SanityDocument[]>(NEWS_QUERY);
       box-sizing: border-box;
       border-radius: 8px;
     }
-
     .news-box > ul {
       background-color: rgba(255, 255, 255, 0.9);
       border: solid 2px #000;
@@ -52,9 +51,6 @@ const news = await sanityClient.fetch<SanityDocument[]>(NEWS_QUERY);
     }
     .news-box > ul > li:last-child {
       border-bottom: none;
-    }
-    .ml-20 {
-      margin-left: 20px;
     }
     .date {
       font-size: 0.8rem;
