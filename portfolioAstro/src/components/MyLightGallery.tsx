@@ -1,7 +1,6 @@
 import LightGallery from "lightgallery/react";
 import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
-import DOMPurify from "isomorphic-dompurify";
 import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-zoom.css";
 import "lightgallery/css/lg-thumbnail.css";
@@ -20,6 +19,22 @@ interface MyLightGalleryProps {
 
 const PLUGINS = [lgThumbnail, lgZoom];
 
+/**
+ * Strips all HTML tags and escapes special characters to prevent XSS.
+ */
+function stripTagsAndEscape(text: string): string {
+  if (!text) return "";
+  // Strip HTML tags
+  const stripped = text.replace(/<[^>]*>?/gm, "");
+  // Escape HTML entities
+  return stripped
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 export default function MyLightGallery({
   imageInfo = [],
 }: MyLightGalleryProps) {
@@ -30,10 +45,10 @@ export default function MyLightGallery({
       download={false}
     >
       {imageInfo.map((image) => {
-        const sanitizedTitle = DOMPurify.sanitize(image.title);
-        const sanitizedDate = DOMPurify.sanitize(image.date);
-        const sanitizedDescription = DOMPurify.sanitize(image.description);
-        const subHtml = `<h4>${sanitizedTitle}</h4><p>${sanitizedDate}</p><p>${sanitizedDescription}</p>`;
+        const escapedTitle = stripTagsAndEscape(image.title);
+        const escapedDate = stripTagsAndEscape(image.date);
+        const escapedDescription = stripTagsAndEscape(image.description);
+        const subHtml = `<h4>${escapedTitle}</h4><p>${escapedDate}</p><p>${escapedDescription}</p>`;
 
         return (
           <a
@@ -41,7 +56,7 @@ export default function MyLightGallery({
             key={image.id}
             data-sub-html={subHtml}
           >
-            <img src={image.url} alt={sanitizedTitle} />
+            <img src={image.url} alt={escapedTitle} />
           </a>
         );
       })}
