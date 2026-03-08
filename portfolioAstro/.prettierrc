@@ -3,6 +3,9 @@
   "singleQuote": false,
   "tabWidth": 2,
   "trailingComma": "es5",
+  "bracketSameLine": false,
+  "printWidth": 80,
+  "htmlWhitespaceSensitivity": "css",
   "plugins": ["prettier-plugin-astro"],
   "overrides": [
     {

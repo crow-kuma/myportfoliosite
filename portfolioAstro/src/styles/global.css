@@ -18,11 +18,19 @@ html {
 }
 
 body {
-  font-family: "Hiragino maru Gothic ProN W4", "Hiragino Kaku Gothic Pro",
-    "Hiragino Sans", "arial", "Meiryo", "MS PGothic", sans-serif !important;
+  font-family:
+    "Hiragino maru Gothic ProN W4", "Hiragino Kaku Gothic Pro", "Hiragino Sans",
+    "arial", "Meiryo", "MS PGothic", sans-serif !important;
 }
 
-body, h1, h2, h3, h4, h5, h6, p {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
 }
 
@@ -40,69 +48,21 @@ li {
   list-style: none;
 }
 
-.mt-24 {
-  margin-top: 24px;
+/* --- Layout Containers --- */
+
+.page-container {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
 }
 
-.ml-20 {
-  margin-left: 20px;
-}
-
-.mb-24 {
-  margin-bottom: 24px;
-}
-.mb-36 {
-  margin-bottom: 36px;
-}
-
-.p-24 {
-  padding: 24px;
-}
-
-.bg-yellow {
-  background-color: var(--yellow);
-}
-
-.bg-light-yellow {
-  background-color: var(--light-yellow);
-}
-
-.bg-pale-light-blue {
-  background-color: var(--pale-light-blue);
-}
-
-.bg-light-pink {
-  background-color: var(--light-pink);
-}
-
-.bg-pale-light-pink {
-  background-color: var(--pale-light-pink);
-}
-
-
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.title-font {
-  font-family: "Love Ya Like A Sister", cursive !important;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.content{
- padding: 0 16px;
- display: flex;
- flex-direction: column;
-}
-
-.flex-center {
+.header-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin: 24px 0;
 }
+
+/* --- Components --- */
 
 .page-title {
   display: inline;
@@ -114,20 +74,14 @@ li {
   text-align: center;
 }
 
- .page-title:before {
-    position: absolute;
-    inset: -5px 5px 5px -5px;
-    border: 1px solid #353535;
-    content: "";
-  }
-
-.title-box {
-  display: flex;
-  justify-content: center;
-  margin: 24px 0;
+.page-title:before {
+  position: absolute;
+  inset: -5px 5px 5px -5px;
+  border: 1px solid #353535;
+  content: "";
 }
 
-.title-tab > h3 {
+.tab-header > h3 {
   display: inline-block;
   padding: 2px 16px;
   border-top-left-radius: 8px;
@@ -157,7 +111,7 @@ li {
 .card {
   border-radius: 8px;
   padding: 16px 24px;
-  margin-top : 24px;
+  margin-top: 24px;
 }
 
 .card > h5 {
@@ -165,6 +119,66 @@ li {
   padding-bottom: 4px;
   margin-bottom: 4px;
   border-bottom: solid 1px var(--black);
+}
+
+/* --- Utilities --- */
+
+.u-mt-24 {
+  margin-top: 24px;
+}
+
+.u-ml-20 {
+  margin-left: 20px;
+}
+
+.u-mb-24 {
+  margin-bottom: 24px;
+}
+
+.u-mb-36 {
+  margin-bottom: 36px;
+}
+
+.u-p-24 {
+  padding: 24px;
+}
+
+.u-bg-yellow {
+  background-color: var(--yellow);
+}
+
+.u-bg-light-yellow {
+  background-color: var(--light-yellow);
+}
+
+.u-bg-pale-light-blue {
+  background-color: var(--pale-light-blue);
+}
+
+.u-bg-light-pink {
+  background-color: var(--light-pink);
+}
+
+.u-bg-pale-light-pink {
+  background-color: var(--pale-light-pink);
+}
+
+.u-title-font {
+  font-family: "Love Ya Like A Sister", cursive !important;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.u-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.u-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 
 .thumbnail-grid {

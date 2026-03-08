@@ -6,52 +6,85 @@ import SocialBanner from "../components/SocialBanner.astro";
 import NotificationBox from "../components/NotificationBox.astro";
 
 const pageTitle = "SNS・ご連絡情報";
+const illustBanners = [
+  {
+    href: "https://x.com/shirokumanocrow",
+    src: "/images/social/x_banner.svg",
+    alt: "X Logo",
+    label: "X (Twitter)",
+  },
+  {
+    href: "https://www.instagram.com/crow_k/",
+    src: "/images/social/instagram_banner.svg",
+    alt: "Instagram Logo",
+    label: "Instagram",
+  },
+  {
+    href: "https://www.threads.com/@crow_k",
+    src: "/images/social/threads_banner.svg",
+    alt: "Threads Logo",
+    label: "Threads",
+  },
+  {
+    href: "https://www.youtube.com/@crow_k",
+    src: "/images/social/youtube_banner.svg",
+    alt: "YouTube Logo",
+    label: "YouTube",
+  },
+];
+const techBanners = [
+  {
+    href: "https://github.com/crow-kuma",
+    src: "/images/social/github_banner.svg",
+    alt: "GitHub Logo",
+    label: "GitHub",
+  },
+];
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <div class="contact-box content mb-36">
-    <PageTitle pageTitle={pageTitle} className="bg-pale-light-pink" />
-    <SocialLinksSection title="イラスト" tabClass="bg-light-pink" gridClass="bg-pale-light-pink" gridColumns={4}>
-      <SocialBanner
-        href="https://x.com/shirokumanocrow"
-        src="/images/social/x_banner.svg"
-        alt="X Logo"
-        label="X (Twitter)"
-      />
-      <SocialBanner
-        href="https://www.instagram.com/crow_k/"
-        src="/images/social/instagram_banner.svg"
-        alt="Instagram Logo"
-        label="Instagram"
-      />
-      <SocialBanner
-        href="https://www.threads.com/@crow_k"
-        src="/images/social/threads_banner.svg"
-        alt="Threads Logo"
-        label="Threads"
-      />
-      <SocialBanner
-        href="https://www.youtube.com/@crow_k"
-        src="/images/social/youtube_banner.svg"
-        alt="YouTube Logo"
-        label="YouTube"
-      />
+  <div class="contact-layout page-container u-mb-36">
+    <PageTitle pageTitle={pageTitle} className="u-bg-pale-light-pink" />
+    <SocialLinksSection
+      title="イラスト"
+      tabClass="u-bg-light-pink"
+      gridClass="u-bg-pale-light-pink"
+      gridColumns={4}
+    >
+      {
+        illustBanners.map((banner) => (
+          <SocialBanner
+            href={banner.href}
+            src={banner.src}
+            alt={banner.alt}
+            label={banner.label}
+          />
+        ))
+      }
     </SocialLinksSection>
-
-    <SocialLinksSection title="Tech" tabClass="bg-light-pink" gridClass="bg-pale-light-pink" gridColumns={4}>
-      <SocialBanner
-        href="https://github.com/crow-kuma"
-        src="/images/social/github_banner.svg"
-        alt="GitHub Logo"
-        label="GitHub"
-      />
+    <SocialLinksSection
+      title="Tech"
+      tabClass="u-bg-light-pink"
+      gridClass="u-bg-pale-light-pink"
+      gridColumns={4}
+    >
+      {
+        techBanners.map((banner) => (
+          <SocialBanner
+            href={banner.href}
+            src={banner.src}
+            alt={banner.alt}
+            label={banner.label}
+          />
+        ))
+      }
     </SocialLinksSection>
     <NotificationBox />
   </div>
 </BaseLayout>
 
 <style>
-  .contact-box {
+  .contact-layout {
     max-width: 900px;
     margin: 0 auto;
     padding: 0 20px;

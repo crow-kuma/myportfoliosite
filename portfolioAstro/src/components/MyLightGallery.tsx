@@ -19,7 +19,9 @@ interface MyLightGalleryProps {
 
 const PLUGINS = [lgThumbnail, lgZoom];
 
-export default function MyLightGallery({ imageInfo = [] }: MyLightGalleryProps) {
+export default function MyLightGallery({
+  imageInfo = [],
+}: MyLightGalleryProps) {
   return (
     <LightGallery
       elementClassNames="thumbnail-grid"
