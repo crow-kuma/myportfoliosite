@@ -7,9 +7,9 @@ const NEWS_QUERY = `*[_type == "news" && public == true] | order(date desc)`;
 const news = await sanityClient.fetch<SanityDocument[]>(NEWS_QUERY);
 ---
 
-<div class="news-box">
-  <div class="title-tab ml-20">
-    <h3 class="bg-yellow">News</h3>
+<div class="news-section">
+  <div class="tab-header u-ml-20">
+    <h3 class="u-bg-yellow">News</h3>
   </div>
   <ul>
     {
@@ -31,25 +31,25 @@ const news = await sanityClient.fetch<SanityDocument[]>(NEWS_QUERY);
   </ul>
 
   <style is:global>
-    .news-box {
+    .news-section {
       width: calc(100vw - 32px);
       max-width: calc(100vw - 32px);
       padding-bottom: 16px;
       box-sizing: border-box;
       border-radius: 8px;
     }
-    .news-box > ul {
+    .news-section > ul {
       background-color: rgba(255, 255, 255, 0.9);
       border: solid 2px #000;
       margin: 0 16px;
       padding: 0;
     }
-    .news-box > ul > li {
+    .news-section > ul > li {
       margin: 0 16px;
       padding: 16px 0;
       border-bottom: solid 1px #ccc;
     }
-    .news-box > ul > li:last-child {
+    .news-section > ul > li:last-child {
       border-bottom: none;
     }
     .date {

@@ -19,22 +19,47 @@ interface MyLightGalleryProps {
 
 const PLUGINS = [lgThumbnail, lgZoom];
 
-export default function MyLightGallery({ imageInfo = [] }: MyLightGalleryProps) {
+/**
+ * Strips all HTML tags and escapes special characters to prevent XSS.
+ */
+function stripTagsAndEscape(text: string): string {
+  if (!text) return "";
+  // Strip HTML tags
+  const stripped = text.replace(/<[^>]*>?/gm, "");
+  // Escape HTML entities
+  return stripped
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+export default function MyLightGallery({
+  imageInfo = [],
+}: MyLightGalleryProps) {
   return (
     <LightGallery
       elementClassNames="thumbnail-grid"
       plugins={PLUGINS}
       download={false}
     >
-      {imageInfo.map((image) => (
-        <a
-          data-src={image.url}
-          key={image.id}
-          data-sub-html={`<h4>${image.title}</h4><p>${image.date}</p><p>${image.description}</p>`}
-        >
-          <img src={image.url} alt={image.title} />
-        </a>
-      ))}
+      {imageInfo.map((image) => {
+        const escapedTitle = stripTagsAndEscape(image.title);
+        const escapedDate = stripTagsAndEscape(image.date);
+        const escapedDescription = stripTagsAndEscape(image.description);
+        const subHtml = `<h4>${escapedTitle}</h4><p>${escapedDate}</p><p>${escapedDescription}</p>`;
+
+        return (
+          <a
+            data-src={image.url}
+            key={image.id}
+            data-sub-html={subHtml}
+          >
+            <img src={image.url} alt={escapedTitle} />
+          </a>
+        );
+      })}
     </LightGallery>
   );
 }

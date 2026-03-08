@@ -9,11 +9,14 @@ interface Props {
 const { title, tabClass, gridClass, gridColumns = 4 } = Astro.props;
 ---
 
-<section class="social-section mb-24">
-  <div class="title-tab">
+<section class="social-section u-mb-24">
+  <div class="tab-header">
     <h3 class={tabClass}>{title}</h3>
   </div>
-  <div class:list={["banner-grid", "p-24", gridClass]} style={`--grid-cols: ${gridColumns}`}>
+  <div
+    class:list={["banner-grid", "u-p-24", gridClass]}
+    style={`--grid-cols: ${gridColumns}`}
+  >
     <slot />
   </div>
 </section>

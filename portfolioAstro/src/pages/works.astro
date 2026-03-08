@@ -44,12 +44,12 @@ const imageInfo = artwork
   title: string;
   description: string;
   date: string;
-}[]; // This clever trick removes all `null` entries
+}[]; // Efficiently filter out null entries from the artwork list.
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <div class="works-box content mb-36">
-    <PageTitle pageTitle={pageTitle} className="bg-pale-light-blue" />
+  <div class="works-layout page-container u-mb-36">
+    <PageTitle pageTitle={pageTitle} className="u-bg-pale-light-blue" />
     <MyLightGallery imageInfo={imageInfo} client:load />
     <NewsBox />
   </div>
