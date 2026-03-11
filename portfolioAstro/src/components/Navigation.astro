@@ -1,5 +1,10 @@
 ---
-
+const menuItems = [
+  { href: "/about", label: "About Crow", tooltip: "熊野クロウについて" },
+  { href: "/works", label: "Works", tooltip: "作品・お仕事情報" },
+  { href: "/contact", label: "Contact", tooltip: "SNS・ご連絡情報" },
+  { href: "/misc", label: "Misc", tooltip: "その他おたのしみ" },
+];
 ---
 
 <nav class="navigation u-flex-center">
@@ -9,71 +14,95 @@
     </h1>
   </div>
   <ul class="menu u-flex-center">
-    <li>
-      <a
-        href="/about"
-        data-tooltip="熊野クロウについて"
-        aria-label="熊野クロウについて（About Crow）"
-      >
-        About Crow
-      </a>
-    </li>
-    <li>
-      <a
-        href="/works"
-        data-tooltip="作品・お仕事情報"
-        aria-label="作品・お仕事情報（Works）"
-      >
-        Works
-      </a>
-    </li>
-    <li>
-      <a
-        href="/contact"
-        data-tooltip="SNS・ご連絡情報"
-        aria-label="SNS・ご連絡情報（Contact）"
-      >
-        Contact
-      </a>
-    </li>
-    <li>
-      <a
-        href="/misc"
-        data-tooltip="その他おたのしみ"
-        aria-label="その他おたのしみ（Misc）"
-      >
-        Misc
-      </a>
-    </li>
+    {
+      menuItems.map((item) => (
+        <li>
+          <a
+            class="u-flex-column"
+            href={item.href}
+            data-tooltip={item.tooltip}
+          >
+            {item.label}
+            <div class="mobile-sublabel">{item.tooltip}</div>
+          </a>
+        </li>
+      ))
+    }
   </ul>
 </nav>
 
 <style>
   .navigation {
     position: relative;
+    padding: 8px 0 0 0;
     justify-content: space-between;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
     background-color: rgba(255, 255, 255, 0.85);
     z-index: 10;
+    flex-wrap: wrap;
   }
+
+  @media (min-width: 768px) {
+    .navigation {
+      padding: 0;
+      flex-wrap: nowrap;
+    }
+  }
+
   .site-branding {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: bold;
     padding-left: 10px;
+    flex-shrink: 0;
   }
+
+  @media (min-width: 768px) {
+    .site-branding {
+      font-size: 1.8rem;
+    }
+  }
+
   .site-branding h1 {
     padding-left: 10px;
-    line-height: 1em;
-    font-size: 1.5em !important;
+    line-height: 1.2em;
+    font-size: 1.2em !important;
   }
+
+  @media (min-width: 768px) {
+    .site-branding h1 {
+      line-height: 1em;
+      font-size: 1.5em !important;
+    }
+  }
+
   .menu {
     align-items: center;
+    width: 100%;
+    margin-top: 8px;
+    border-top: 1px solid #eee;
   }
+
+  @media (min-width: 768px) {
+    .menu {
+      width: auto;
+      margin-top: 0;
+      border-top: none;
+    }
+  }
+
   .menu li {
-    width: 160px;
+    flex: 1;
     display: flex;
     position: relative;
   }
+
+  @media (min-width: 768px) {
+    .menu li {
+      width: 160px;
+      flex: none;
+    }
+  }
+
   .menu li::before {
     content: "";
     position: absolute;
@@ -91,46 +120,70 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    line-height: 3rem;
+    line-height: 2rem;
+    font-size: 0.9rem;
   }
 
-  .menu a::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    top: 129%;
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    font-size: 0.75rem;
-    padding: 4px 8px;
-    border-radius: 4px;
-    pointer-events: none;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease-in-out;
-    z-index: 20;
+  @media (min-width: 768px) {
+    .menu a {
+      line-height: 3rem;
+      font-size: 1rem;
+    }
   }
 
-  .menu a::before {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 6px;
-    border-style: solid;
-    border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease-in-out;
-    z-index: 20;
+  /* Tooltips - Only show on screens with hover capability and larger width */
+  @media (hover: hover) and (min-width: 768px) {
+    .menu a::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      top: 129%;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 4px;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease-in-out;
+      z-index: 20;
+    }
+
+    .menu a::before {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 6px;
+      border-style: solid;
+      border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease-in-out;
+      z-index: 20;
+    }
+
+    .menu a:hover::after,
+    .menu a:hover::before {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 
-  .menu a:hover::after,
-  .menu a:hover::before {
-    opacity: 1;
-    visibility: visible;
+  .mobile-sublabel {
+    display: block;
+    font-size: 0.5rem;
+    line-height: 0.8em;
+    padding-bottom: 0.3rem;
+  }
+
+  @media (min-width: 768px) {
+    .mobile-sublabel {
+      display: none;
+    }
   }
 </style>

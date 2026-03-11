@@ -58,19 +58,35 @@ li {
   padding: 0 16px;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .header-wrapper {
   display: flex;
   justify-content: center;
-  margin: 24px 0;
+  margin: 16px 0;
+}
+
+@media (min-width: 768px) {
+  .header-wrapper {
+    margin: 24px 0;
+  }
 }
 
 .thumbnail-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
-  margin: 0 16px 16px 16px;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin: 0 0 16px 0;
+}
+
+@media (min-width: 768px) {
+  .thumbnail-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 0 16px 16px 16px;
+  }
 }
 
 .thumbnail-grid a {
@@ -96,11 +112,17 @@ li {
 .page-title {
   display: inline;
   position: relative;
-  margin-bottom: 0.2rem;
-  padding: 1rem;
+  padding: 0.8rem 1.2rem 1.2rem 0.8rem;
   font-weight: bold;
-  font-size: 26px;
+  font-size: 1.4rem;
   text-align: center;
+}
+
+@media (min-width: 768px) {
+  .page-title {
+    padding: 1rem 1.4rem 1.4rem 1rem;
+    font-size: 1.6rem;
+  }
 }
 
 .page-title:before {
@@ -112,19 +134,32 @@ li {
 
 .tab-header > h3 {
   display: inline-block;
-  padding: 2px 16px;
+  padding: 2px 12px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   margin-bottom: 0;
 }
 
+@media (min-width: 768px) {
+  .tab-header > h3 {
+    padding: 2px 16px;
+    font-size: 1.6rem;
+  }
+}
+
 .section-title {
-  font-size: 1.4em;
+  font-size: 1.2em;
   display: inline;
   border: solid 1px var(--black);
   border-bottom: 0;
   padding: 4px 8px;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 1.4em;
+  }
 }
 
 .section-paragraph {
@@ -139,18 +174,33 @@ li {
 
 .card {
   border-radius: 8px;
-  padding: 16px 24px;
-  margin-top: 24px;
+  padding: 12px 16px;
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 16px 24px;
+  }
 }
 
 .card > h5 {
-  font-size: 1.4em;
+  font-size: 1.2em;
   padding-bottom: 4px;
   margin-bottom: 4px;
   border-bottom: solid 1px var(--black);
 }
 
+@media (min-width: 768px) {
+  .card > h5 {
+    font-size: 1.4em;
+  }
+}
+
 /* --- Utilities --- */
+
+.u-mt-16 {
+  margin-top: 16px;
+}
 
 .u-mt-24 {
   margin-top: 24px;
@@ -200,10 +250,21 @@ li {
   align-items: center;
 }
 
+.u-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
 .u-grid-3 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .u-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* --- Base Styles --- */

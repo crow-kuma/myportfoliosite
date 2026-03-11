@@ -2,6 +2,9 @@
   "name": "portfolioAstro",
   "type": "module",
   "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -10,13 +13,13 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/react": "^4.4.2",
+    "@astrojs/check": "^0.9.7",
+    "@astrojs/react": "^5.0.0",
     "@sanity/astro": "^3.2.10",
     "@sanity/client": "^7.8.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "astro": "^5.18.0",
+    "astro": "^6.0.2",
     "astro-portabletext": "^0.11.1",
     "lightgallery": "^2.9.0-beta.1",
     "react": "^19.1.0",

@@ -112,17 +112,40 @@ const pageTitle = "Kumano Crow";
   }
 
   .hero-container {
-    padding-top: 42px;
-    z-index: 3; /* 背景より前面（スライドのz-index:1やデフォルトより上に） */
+    margin-top: 88px;
+    z-index: 3;
+  }
+
+  @media (min-width: 768px) {
+    .hero-container {
+      margin-top: 0;
+    }
   }
 
   .branding-wrapper {
     margin: auto;
     transform-origin: left;
+    padding: 0 16px;
   }
+
+  @media (min-width: 768px) {
+    .branding-wrapper {
+      padding: 0;
+    }
+  }
+
   .branding-wrapper h1 {
-    margin-top: 32px;
-    font-size: 4rem;
+    margin-top: 16px;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+
+  @media (min-width: 768px) {
+    .branding-wrapper h1 {
+      margin-top: 32px;
+      font-size: 4rem;
+    }
   }
 
   .branding-wrapper.is-active {
@@ -132,14 +155,14 @@ const pageTitle = "Kumano Crow";
   @keyframes shrink {
     0% {
       opacity: 0;
-      transform: translateX(20vw) scaleX(1) scaleY(1) skew(-60deg);
+      transform: translateX(10vw) scaleX(1) scaleY(1) skew(-30deg);
     }
     10% {
       opacity: 1;
       transform: translateX(0) scaleX(1) scaleY(1) skew(0deg);
     }
     80% {
-      transform: translateX(0) scaleX(0.3) scaleY(1.2) skew(0deg);
+      transform: translateX(0) scaleX(0.8) scaleY(1.1) skew(0deg);
     }
     100% {
       transform: translateX(0) scaleX(1) scaleY(1) skew(0deg);
