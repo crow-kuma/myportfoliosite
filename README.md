@@ -23,7 +23,7 @@ portfolio/
 ### 1. Install dependencies (both frontend & CMS)
 
 cd portfolio/portfolioAstro
-npm install --legacy-peer-deps
+npm install
 
 cd ../portfolioSanity
 npm install
