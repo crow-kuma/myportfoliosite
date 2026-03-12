@@ -43,10 +43,10 @@ This runs:
 
 ## 🧠 Technologies Used
 
-- [Astro](https://astro.build/) (`^6.0.2`) – Static site generator for modern web.
+- [Astro](https://astro.build/) (`6.0.3`) – Static site generator for modern web (Target: Netlify SSR).
 - [Vite](https://vitejs.dev/) (`^7.3.1`) – Build tool used by Astro for lightning-fast bundling.
-- [React](https://react.dev/) (`^19.1.0`) – UI framework for client interactivity.
-- [Sanity](https://www.sanity.io/) (`^5.14.1` Studio, `^7.8.0` Client) – Headless CMS backend with live editor.
+- [React](https://react.dev/) (`19.2.4`) – UI framework for client interactivity.
+- [Sanity](https://www.sanity.io/) (`5.14.1` Studio, `7.17.0` Client) – Headless CMS backend with live editor.
 
 ---
 
@@ -57,7 +57,7 @@ To generate a production build locally:
 cd portfolioAstro
 npm run build
 
-The output will be generated in `portfolioAstro/dist`.
+The output will be generated in `portfolioAstro/dist` and configured for deployment on **Netlify**.
 
 ---
 
