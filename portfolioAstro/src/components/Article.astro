@@ -7,11 +7,11 @@ interface Props {
 const { title, className } = Astro.props;
 ---
 
-<section class:list={[className, "u-mb-24"]}>
+<section class:list={[className, "glb-u-mb-24"]}>
   <div class="subtitle-wrapper">
-    <h4 class="section-title">{title}</h4>
+    <h4 class="glb-section-title">{title}</h4>
   </div>
-  <div class="section-paragraph">
+  <div class="glb-section-paragraph">
     <slot />
   </div>
 </section>

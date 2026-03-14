@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageTitle from "../components/PageTitle.astro";
+
+const pageTitle = "404";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <PageTitle
+    pageTitle={`${pageTitle} Not Found`}
+    className="glb-u-bg-light-yellow"
+  />
+  <div class="not-found-container">
+    <p>ページが見つかりません</p>
+    <a class="glb-decorated-link" href="/">トップページに戻る</a>
+  </div>
+</BaseLayout>
+
+<style>
+  .not-found-container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+  }
+  .not-found-container > p {
+    font-size: 2rem;
+    margin-bottom: 24px;
+  }
+  .not-found-container > a {
+    font-size: 1.5rem;
+  }
+</style>
