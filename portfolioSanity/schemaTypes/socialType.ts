@@ -11,9 +11,9 @@ export const socialType = defineType({
       type: 'string',
       options: {
         list: [
-          {title: 'illustration', value: 'illustration'},
-          {title: 'tech', value: 'tech'},
-          {title: 'other', value: 'other'},
+          {title: 'Illustration', value: 'illustration'},
+          {title: 'Tech', value: 'tech'},
+          {title: 'Other', value: 'other'},
         ],
         layout: 'dropdown',
       },
