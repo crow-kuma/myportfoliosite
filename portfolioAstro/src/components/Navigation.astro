@@ -3,25 +3,25 @@ const menuItems = [
   { href: "/about", label: "About Crow", tooltip: "熊野クロウについて" },
   { href: "/works", label: "Works", tooltip: "作品・お仕事情報" },
   { href: "/contact", label: "Contact", tooltip: "SNS・ご連絡情報" },
-  { href: "/misc", label: "Misc", tooltip: "その他おたのしみ" },
+  {
+    href: "/playground",
+    label: "Playground",
+    tooltip: "お楽しみアプリ・配布物",
+  },
 ];
 ---
 
-<nav class="navigation u-flex-center">
+<nav class="navigation glb-u-flex-center">
   <div class="site-branding">
-    <h1 class="title-font">
+    <h1 class="glb-title-font">
       <a href="/">Kumano Crow</a>
     </h1>
   </div>
-  <ul class="menu u-flex-center">
+  <ul class="menu glb-u-flex-center">
     {
       menuItems.map((item) => (
         <li>
-          <a
-            class="u-flex-column"
-            href={item.href}
-            data-tooltip={item.tooltip}
-          >
+          <a class="glb-u-flex-column" href={item.href} data-tooltip={item.tooltip}>
             {item.label}
             <div class="mobile-sublabel">{item.tooltip}</div>
           </a>
@@ -174,6 +174,7 @@ const menuItems = [
     }
   }
 
+  /* label for mobile - this shows tooltip text in mobile */
   .mobile-sublabel {
     display: block;
     font-size: 0.5rem;

@@ -40,7 +40,7 @@ export default function MyLightGallery({
 }: MyLightGalleryProps) {
   return (
     <LightGallery
-      elementClassNames="thumbnail-grid"
+      elementClassNames="glb-thumbnail-grid"
       plugins={PLUGINS}
       download={false}
     >
@@ -51,11 +51,7 @@ export default function MyLightGallery({
         const subHtml = `<h4>${escapedTitle}</h4><p>${escapedDate}</p><p>${escapedDescription}</p>`;
 
         return (
-          <a
-            data-src={image.url}
-            key={image.id}
-            data-sub-html={subHtml}
-          >
+          <a data-src={image.url} key={image.id} data-sub-html={subHtml}>
             <img src={image.url} alt={escapedTitle} />
           </a>
         );

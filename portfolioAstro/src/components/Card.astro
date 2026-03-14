@@ -8,7 +8,7 @@ interface Props {
 const { className, cardTitle, listContent } = Astro.props;
 ---
 
-<div class:list={["card", className]}>
+<div class:list={["glb-card", className]}>
   <h5>{cardTitle}</h5>
   <ul>
     {listContent.map((item: string) => <li>{item}</li>)}

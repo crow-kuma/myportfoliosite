@@ -14,6 +14,8 @@
   --pale-light-blue: #ccf2ff;
   --light-pink: #ffcccc;
   --pale-light-pink: #ffe6e6;
+  --light-green: #ccffcc;
+  --pale-light-green: #e6ffe6;
 }
 
 html {
@@ -54,7 +56,7 @@ li {
 
 /* --- Layout Containers --- */
 
-.page-container {
+.glb-page-container {
   padding: 0 16px;
   display: flex;
   flex-direction: column;
@@ -62,19 +64,19 @@ li {
   box-sizing: border-box;
 }
 
-.header-wrapper {
+.glb-header-wrapper {
   display: flex;
   justify-content: center;
   margin: 16px 0;
 }
 
 @media (min-width: 768px) {
-  .header-wrapper {
+  .glb-header-wrapper {
     margin: 24px 0;
   }
 }
 
-.thumbnail-grid {
+.glb-thumbnail-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 12px;
@@ -82,34 +84,34 @@ li {
 }
 
 @media (min-width: 768px) {
-  .thumbnail-grid {
+  .glb-thumbnail-grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 16px;
     margin: 0 16px 16px 16px;
   }
 }
 
-.thumbnail-grid a {
+.glb-thumbnail-grid a {
   display: block;
   aspect-ratio: 1 / 1;
   border-radius: 8px;
   overflow: hidden;
 }
 
-.thumbnail-grid img {
+.glb-thumbnail-grid img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.2s ease-in-out;
 }
 
-.thumbnail-grid a:hover img {
+.glb-thumbnail-grid a:hover img {
   transform: scale(1.05);
 }
 
 /* --- Components --- */
 
-.page-title {
+.glb-page-title {
   display: inline;
   position: relative;
   padding: 0.8rem 1.2rem 1.2rem 0.8rem;
@@ -119,20 +121,20 @@ li {
 }
 
 @media (min-width: 768px) {
-  .page-title {
+  .glb-page-title {
     padding: 1rem 1.4rem 1.4rem 1rem;
     font-size: 1.6rem;
   }
 }
 
-.page-title:before {
+.glb-page-title:before {
   position: absolute;
   inset: -5px 5px 5px -5px;
   border: 1px solid #353535;
   content: "";
 }
 
-.tab-header > h3 {
+.glb-tab-header > h3 {
   display: inline-block;
   padding: 2px 12px;
   border-top-left-radius: 8px;
@@ -142,13 +144,13 @@ li {
 }
 
 @media (min-width: 768px) {
-  .tab-header > h3 {
+  .glb-tab-header > h3 {
     padding: 2px 16px;
     font-size: 1.6rem;
   }
 }
 
-.section-title {
+.glb-section-title {
   font-size: 1.2em;
   display: inline;
   border: solid 1px var(--black);
@@ -157,33 +159,33 @@ li {
 }
 
 @media (min-width: 768px) {
-  .section-title {
+  .glb-section-title {
     font-size: 1.4em;
   }
 }
 
-.section-paragraph {
+.glb-section-paragraph {
   padding: 8px;
   border-left: solid 1px var(--black);
   border-top: solid 1px var(--black);
 }
 
-.decorated-link {
+.glb-decorated-link {
   text-decoration: underline dotted;
 }
 
-.card {
+.glb-card {
   border-radius: 8px;
   padding: 12px 16px;
 }
 
 @media (min-width: 768px) {
-  .card {
+  .glb-card {
     padding: 16px 24px;
   }
 }
 
-.card > h5 {
+.glb-card > h5 {
   font-size: 1.2em;
   padding-bottom: 4px;
   margin-bottom: 4px;
@@ -191,84 +193,92 @@ li {
 }
 
 @media (min-width: 768px) {
-  .card > h5 {
+  .glb-card > h5 {
     font-size: 1.4em;
   }
 }
 
 /* --- Utilities --- */
 
-.u-mt-16 {
+.glb-u-mt-16 {
   margin-top: 16px;
 }
 
-.u-mt-24 {
+.glb-u-mt-24 {
   margin-top: 24px;
 }
 
-.u-ml-20 {
+.glb-u-ml-20 {
   margin-left: 20px;
 }
 
-.u-mb-24 {
+.glb-u-mb-24 {
   margin-bottom: 24px;
 }
 
-.u-mb-36 {
+.glb-u-mb-36 {
   margin-bottom: 36px;
 }
 
-.u-p-24 {
+.glb-u-p-24 {
   padding: 24px;
 }
 
-.u-bg-yellow {
+.glb-u-bg-yellow {
   background-color: var(--yellow);
 }
 
-.u-bg-light-yellow {
+.glb-u-bg-light-yellow {
   background-color: var(--light-yellow);
 }
 
-.u-bg-pale-light-blue {
+.glb-u-bg-pale-light-blue {
   background-color: var(--pale-light-blue);
 }
 
-.u-bg-light-pink {
+.glb-u-bg-light-pink {
   background-color: var(--light-pink);
 }
 
-.u-bg-pale-light-pink {
+.glb-u-bg-pale-light-pink {
   background-color: var(--pale-light-pink);
+}
+
+.glb-u-bg-light-green {
+  background-color: var(--light-green);
+}
+
+.glb-u-bg-pale-light-green {
+  background-color: var(--pale-light-green);
 }
 
 /* --- Utilities - Layout --- */
 
-.u-flex-center {
+.glb-u-flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.u-flex-column {
+.glb-u-flex-column {
   display: flex;
   flex-direction: column;
 }
 
-.u-grid-3 {
+.glb-u-grid-3 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
 }
 
 @media (min-width: 768px) {
-  .u-grid-3 {
+  .glb-u-grid-3 {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 /* --- Base Styles --- */
-.title-font {
+.glb-title-font {
   font-family: "Love Ya Like A Sister", cursive !important;
   font-weight: 400;
   font-style: normal;
