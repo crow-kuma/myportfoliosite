@@ -4,42 +4,43 @@ import PageTitle from "../components/PageTitle.astro";
 import SocialLinksSection from "../components/SocialLinksSection.astro";
 import SocialBanner from "../components/SocialBanner.astro";
 import NotificationBox from "../components/NotificationBox.astro";
+import { sanityClient } from "sanity:client";
+import type { SanityDocument } from "@sanity/client";
+import { createImageUrlBuilder } from "@sanity/image-url";
+import type { SanityImageSource } from "@sanity/image-url";
+
+interface SocialBannerData extends SanityDocument {
+  name: string;
+  url: string;
+  category: string;
+  icon?: SanityImageSource;
+}
 
 const pageTitle = "SNS・ご連絡情報";
-const illustBanners = [
-  {
-    href: "https://x.com/shirokumanocrow",
-    src: "/images/social/x_banner.svg",
-    alt: "X Logo",
-    label: "X (Twitter)",
-  },
-  {
-    href: "https://www.instagram.com/crow_k/",
-    src: "/images/social/instagram_banner.svg",
-    alt: "Instagram Logo",
-    label: "Instagram",
-  },
-  {
-    href: "https://www.threads.com/@crow_k",
-    src: "/images/social/threads_banner.svg",
-    alt: "Threads Logo",
-    label: "Threads",
-  },
-  {
-    href: "https://www.youtube.com/@crow_k",
-    src: "/images/social/youtube_banner.svg",
-    alt: "YouTube Logo",
-    label: "YouTube",
-  },
-];
-const techBanners = [
-  {
-    href: "https://github.com/crow-kuma",
-    src: "/images/social/github_banner.svg",
-    alt: "GitHub Logo",
-    label: "GitHub",
-  },
-];
+
+const SOCIAL_QUERY = `*[_type == "social"] | order(category asc)`;
+
+const social = await sanityClient
+  .fetch<SocialBannerData[]>(SOCIAL_QUERY)
+  .catch(() => []);
+
+const { projectId, dataset } = sanityClient.config();
+
+const urlFor = (source: SanityImageSource) =>
+  projectId && dataset
+    ? createImageUrlBuilder({ projectId, dataset }).image(source)
+    : null;
+
+const formattedSocial = social.map((banner) => ({
+  ...banner,
+  iconUrl: banner.icon ? urlFor(banner.icon)?.url() ?? "" : "",
+}));
+
+const illustBanners = formattedSocial.filter(
+  (banner) => banner.category === "illustration"
+);
+const techBanners = formattedSocial.filter((banner) => banner.category === "tech");
+const otherBanners = formattedSocial.filter((banner) => banner.category === "other");
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -54,10 +55,10 @@ const techBanners = [
       {
         illustBanners.map((banner) => (
           <SocialBanner
-            href={banner.href}
-            src={banner.src}
-            alt={banner.alt}
-            label={banner.label}
+            href={banner.url}
+            src={banner.iconUrl}
+            alt={banner.name}
+            label={banner.name}
           />
         ))
       }
@@ -71,10 +72,27 @@ const techBanners = [
       {
         techBanners.map((banner) => (
           <SocialBanner
-            href={banner.href}
-            src={banner.src}
-            alt={banner.alt}
-            label={banner.label}
+            href={banner.url}
+            src={banner.iconUrl}
+            alt={banner.name}
+            label={banner.name}
+          />
+        ))
+      }
+    </SocialLinksSection>
+    <SocialLinksSection
+      title="Other"
+      tabClass="glb-u-bg-light-pink"
+      gridClass="glb-u-bg-pale-light-pink"
+      gridColumns={4}
+    >
+      {
+        otherBanners.map((banner) => (
+          <SocialBanner
+            href={banner.url}
+            src={banner.iconUrl}
+            alt={banner.name}
+            label={banner.name}
           />
         ))
       }
