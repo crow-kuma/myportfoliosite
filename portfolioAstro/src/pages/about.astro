@@ -27,7 +27,7 @@ const certificationContent = [
   "Next up: PM系資格受験を検討中",
 ];
 
-const techStackContent = ["Astro", "Sanity", "React"];
+const techStackContent = ["Astro", "Sanity", "React", "TypeScript"];
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -58,28 +58,30 @@ const techStackContent = ["Astro", "Sanity", "React"];
       </p>
     </Article>
     <Article title="エンジニアの経歴" className="engineer-box">
-      <p>
-        HTML,
-        CSS等を海外の学習サイトを利用して学び始め、友人のwebサイト構築などを担当。
-      </p>
-      <p>
-        大学で情報コースマルチメディア系に所属し、心理学とwebアクセシビリティについて学ぶ。
-      </p>
-      <p>
-        事務の仕事ではGAS,
-        VBAを利用したマクロや、Pythonで簡単な業務アプリを作成。
-      </p>
-      <p>フルスタックエンジニアとしてチームでの開発を経験。</p>
-      <p>業務改善や効率化に興味あり。</p>
-      <p>UXデザイン等フロントエンド方面が得意分野。</p>
-      <p>MOOC(edX, Coursera)やUdemy等を利用して勉強継続中。</p>
-      <p>
-        一応日米バイリンガルなので、tech系イベントLiveやCS50等米大学の講義を見て日々情報収集をしています。
-      </p>
-      <p>
-        コーダー: 1年, フルスタックエンジニア: 2年,
-        その他業務委託等で合計5年ほど
-      </p>
+      <div class="engineer-text-container">
+        <p>
+          海外の学習サイトでHTML5,
+          CSS3から学び始め、マークアップエンジニアとしての経験や友人のWebサイト制作を通じてフロントエンドの楽しさに目覚めました。
+          「使いやすさ」や「迷わない導線」など、UXを意識したUIを確立された理論を以て設計したいと考え、大学に社会人入学して情報コース（マルチメディア系）に所属し、心理学とWebアクセシビリティを学びました。
+        </p>
+        <p>
+          その後、事務職で業務効率化・業務改善を自主的に追求し、GAS・VBAマクロや、Pythonによる業務アプリ開発を行ったことをきっかけに、本格的にエンジニアを目指すようになりました。
+        </p>
+        <p>
+          フルスタックエンジニアとしては、Reactを用いた画面の設計・実装と、Java＋PostgreSQLによるAPI・DB設計・実装などを担当。バックエンドの制約やデータ構造を理解したうえで、フロント側の情報設計や仕様検討ができるようになりました。
+          デバッグは業務の中でも特に楽しかった工程で、ミステリー小説を読むような感覚で「なぜこの挙動になるのか？」「なぜこのバグが発生したのか？」と仮説を立ててログを追い、原因が一本の線でつながる瞬間に大きなやりがいを感じます。
+          その過程で、リファクタリング等を適切に行なったメンテナンス性の高いコードの重要性を実感し、日々より良いコードを書けるよう意識しています。
+        </p>
+        <p>
+          現在は、生成AIを用いた開発も実践しながら「AI時代の価値あるエンジニアとは何か」を模索し、日々の学習に努めています。
+          座学では、MOOC（edX,
+          Coursera）やUdemy、英語圏のカンファレンス動画などを活用して、継続的に学習しています。
+        </p>
+        <p>
+          マークアップエンジニア: 1年, フルスタックエンジニア: 2年〜,
+          その他業務委託等で合計5年ほど開発・業務改善に携わってきました。
+        </p>
+      </div>
       <div class="glb-u-grid-3 glb-u-mt-16">
         <Card
           className="glb-u-bg-light-yellow col-3-1"
@@ -116,5 +118,8 @@ const techStackContent = ["Astro", "Sanity", "React"];
     margin: 0 auto;
     width: 100%;
     max-width: 900px;
+  }
+  .engineer-text-container p {
+    margin-bottom: 0.5rem;
   }
 </style>
