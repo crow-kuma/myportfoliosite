@@ -1,0 +1,4 @@
+[build]
+  base    = "portfolioAstro"
+  command = "npm run build"
+  publish = "dist"
