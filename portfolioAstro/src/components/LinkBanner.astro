@@ -9,7 +9,7 @@ interface Props {
 const { href, src, alt, label } = Astro.props;
 ---
 
-<a href={href} target="_blank" class="banner-link" aria-label={label}>
+<a href={href} target="_blank" rel="noopener noreferrer" class="banner-link">
   <img src={src} alt={alt} />
   <span>{label}</span>
 </a>
@@ -24,11 +24,18 @@ const { href, src, alt, label } = Astro.props;
     background: #fff;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    text-decoration: none;
-    color: #333;
-    font-weight: 600;
-    gap: 15px;
     border: 1px solid rgba(0, 0, 0, 0.03);
+  }
+  .banner-link:focus {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
+  }
+  .banner-link:focus:not(:focus-visible) {
+    outline: none;
+  }
+  .banner-link:focus-visible {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
   }
   .banner-link:hover {
     transform: translateY(-5px);
@@ -37,5 +44,6 @@ const { href, src, alt, label } = Astro.props;
   .banner-link img {
     height: 32px;
     width: auto;
+    margin-inline-end: 16px;
   }
 </style>
