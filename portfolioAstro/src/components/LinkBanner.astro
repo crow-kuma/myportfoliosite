@@ -9,13 +9,7 @@ interface Props {
 const { href, src, alt, label } = Astro.props;
 ---
 
-<a
-  href={href}
-  target="_blank"
-  rel="noopener noreferrer"
-  class="banner-link"
-  aria-label={label}
->
+<a href={href} target="_blank" rel="noopener noreferrer" class="banner-link">
   <img src={src} alt={alt} />
   <span>{label}</span>
 </a>
