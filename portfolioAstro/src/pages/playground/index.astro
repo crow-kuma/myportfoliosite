@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageTitle from "../../components/PageTitle.astro";
+import LinksSection from "../../components/LinksSection.astro";
+import LinkBanner from "../../components/LinkBanner.astro";
+
+const pageTitle = "お楽しみアプリ・配布物";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <div class="glb-page-container">
+    <PageTitle pageTitle={pageTitle} className="glb-u-bg-light-green" />
+    <div class="playground-layout glb-u-mb-36">
+      <p>準備中！</p>
+      <!-- TODO: 準備ができたらコメントアウトを外す -->
+      <!-- <LinksSection
+        title="Apps"
+        tabClass="glb-u-bg-light-green"
+        gridClass="glb-u-bg-pale-light-green"
+        gridColumns={4}
+      >
+        <LinkBanner
+          href="/playground/melo"
+          src=""
+          alt="それって何メロディーレーン？"
+          label="それって何メロディーレーン？"
+        />
+      </LinksSection> -->
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .playground-layout {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+  }
+  .playground-layout > p {
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+  }
+</style>

@@ -1,15 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageTitle from "../components/PageTitle.astro";
-import SocialLinksSection from "../components/SocialLinksSection.astro";
-import SocialBanner from "../components/SocialBanner.astro";
+import LinksSection from "../components/LinksSection.astro";
+import LinkBanner from "../components/LinkBanner.astro";
 import NotificationBox from "../components/NotificationBox.astro";
 import { sanityClient } from "sanity:client";
 import type { SanityDocument } from "@sanity/client";
 import { createImageUrlBuilder } from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url";
 
-interface SocialBannerData extends SanityDocument {
+interface LinkBannerData extends SanityDocument {
   name: string;
   url: string;
   category: string;
@@ -21,7 +21,7 @@ const pageTitle = "SNS・ご連絡情報";
 const SOCIAL_QUERY = `*[_type == "social"] | order(category asc)`;
 
 const social = await sanityClient
-  .fetch<SocialBannerData[]>(SOCIAL_QUERY)
+  .fetch<LinkBannerData[]>(SOCIAL_QUERY)
   .catch(() => []);
 
 const { projectId, dataset } = sanityClient.config();
@@ -33,20 +33,24 @@ const urlFor = (source: SanityImageSource) =>
 
 const formattedSocial = social.map((banner) => ({
   ...banner,
-  iconUrl: banner.icon ? urlFor(banner.icon)?.url() ?? "" : "",
+  iconUrl: banner.icon ? (urlFor(banner.icon)?.url() ?? "") : "",
 }));
 
 const illustBanners = formattedSocial.filter(
   (banner) => banner.category === "illustration"
 );
-const techBanners = formattedSocial.filter((banner) => banner.category === "tech");
-const otherBanners = formattedSocial.filter((banner) => banner.category === "other");
+const techBanners = formattedSocial.filter(
+  (banner) => banner.category === "tech"
+);
+const otherBanners = formattedSocial.filter(
+  (banner) => banner.category === "other"
+);
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <div class="contact-layout glb-page-container glb-u-mb-36">
     <PageTitle pageTitle={pageTitle} className="glb-u-bg-pale-light-pink" />
-    <SocialLinksSection
+    <LinksSection
       title="イラスト"
       tabClass="glb-u-bg-light-pink"
       gridClass="glb-u-bg-pale-light-pink"
@@ -54,7 +58,7 @@ const otherBanners = formattedSocial.filter((banner) => banner.category === "oth
     >
       {
         illustBanners.map((banner) => (
-          <SocialBanner
+          <LinkBanner
             href={banner.url}
             src={banner.iconUrl}
             alt={banner.name}
@@ -62,8 +66,8 @@ const otherBanners = formattedSocial.filter((banner) => banner.category === "oth
           />
         ))
       }
-    </SocialLinksSection>
-    <SocialLinksSection
+    </LinksSection>
+    <LinksSection
       title="Tech"
       tabClass="glb-u-bg-light-pink"
       gridClass="glb-u-bg-pale-light-pink"
@@ -71,7 +75,7 @@ const otherBanners = formattedSocial.filter((banner) => banner.category === "oth
     >
       {
         techBanners.map((banner) => (
-          <SocialBanner
+          <LinkBanner
             href={banner.url}
             src={banner.iconUrl}
             alt={banner.name}
@@ -79,8 +83,8 @@ const otherBanners = formattedSocial.filter((banner) => banner.category === "oth
           />
         ))
       }
-    </SocialLinksSection>
-    <SocialLinksSection
+    </LinksSection>
+    <LinksSection
       title="Other"
       tabClass="glb-u-bg-light-pink"
       gridClass="glb-u-bg-pale-light-pink"
@@ -88,7 +92,7 @@ const otherBanners = formattedSocial.filter((banner) => banner.category === "oth
     >
       {
         otherBanners.map((banner) => (
-          <SocialBanner
+          <LinkBanner
             href={banner.url}
             src={banner.iconUrl}
             alt={banner.name}
@@ -96,7 +100,7 @@ const otherBanners = formattedSocial.filter((banner) => banner.category === "oth
           />
         ))
       }
-    </SocialLinksSection>
+    </LinksSection>
     <NotificationBox />
   </div>
 </BaseLayout>
