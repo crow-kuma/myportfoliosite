@@ -1,0 +1,484 @@
+$black: #212121;
+$yellow: #fdd835;
+$lightblue: #47d1ff;
+$pink: #ff729f;
+
+$border: 3px solid #212121;
+
+$bottomFifty: 0 auto 50px auto;
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-space-between {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+@mixin large-font {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+@mixin x-large-font {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+@mixin yellow-button-before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: -7px;
+  width: 100%;
+  height: 100%;
+  border: $border;
+  transition: 0.2s;
+}
+
+@mixin yellow-button-after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-top: 3px solid $yellow;
+  border-right: 3px solid $yellow;
+  transform: rotate(45deg);
+}
+
+@mixin yellow-button-hover-before {
+  top: 0;
+  left: 0;
+}
+
+@mixin icon-sns-before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: -1;
+  transform: scale(0.9);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  font-size: 1.6em;
+}
+
+#root {
+  max-width: 700px;
+  margin: 0 auto;
+  font-family:
+    "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+    Meiryo, sans-serif;
+  font-weight: normal;
+  color: $black;
+  white-space: pre-wrap;
+  height: 100%;
+}
+
+header {
+  height: 300px;
+}
+
+.title {
+  position: relative;
+  h1 {
+    display: inline-block;
+    position: absolute;
+    top: 50px;
+  }
+
+  &-illust {
+    width: 700px;
+    height: 220px;
+    position: relative;
+    img {
+      height: 220px;
+      position: absolute;
+      top: 30px;
+      right: 0;
+    }
+  }
+}
+
+.fall-in-title {
+  animation: fall-in-title 1s ease-in both;
+}
+@keyframes fall-in-title {
+  0% {
+    transform: translateY(-500px);
+    opacity: 0;
+  }
+  80% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  90% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.fall-in-illust {
+  animation: fall-in-illust 1s ease-out 0.1s both;
+  height: 220px;
+}
+
+@keyframes fall-in-illust {
+  0% {
+    transform: translateY(-500px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.select-menu {
+  @include flex-space-between;
+  margin-bottom: 50px;
+
+  > div {
+    width: 320px;
+  }
+
+  &-standard {
+    align-self: flex-end;
+
+    > .selected-standard {
+      background-color: $lightblue;
+    }
+  }
+
+  &-various {
+    > .selected-various {
+      background-color: $pink;
+    }
+  }
+
+  &-button {
+    @include x-large-font;
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 40px 0;
+    width: 320px;
+    border: $border;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+
+.select-menu-balloon {
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #fff;
+  padding: 0 10px;
+  border: 3px solid $black;
+  color: #333;
+  width: 320px;
+  height: auto;
+  text-align: center;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    border: 12px solid transparent;
+    top: 100%;
+    left: 47%;
+  }
+
+  &:before {
+    border-top: 20px solid $black;
+  }
+
+  &:after {
+    margin-top: -4px;
+    border-top: 20px solid #fff;
+  }
+}
+
+.main-input {
+  @include flex-column-center;
+  margin-bottom: 50px;
+  &-box {
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    > label {
+      @include x-large-font;
+      display: inline-block;
+      width: 100px;
+      background-color: $yellow;
+      border-bottom: $border;
+      padding: 5px 0 0 5px;
+    }
+    > input {
+      width: 400px;
+      height: 70px;
+      border: $border;
+      font-size: 2.4rem;
+      padding-left: 10px;
+    }
+  }
+}
+
+.main-summary {
+  @include flex-column-center;
+  @include x-large-font;
+  margin-bottom: 50px;
+  p {
+    margin: 0;
+  }
+  p:first-child {
+    padding-bottom: 10px;
+  }
+}
+
+.main-button {
+  @include x-large-font;
+  position: relative;
+  background-color: $yellow;
+  display: block;
+  margin: $bottomFifty;
+  padding: 15px 100px;
+  border: none;
+  cursor: pointer;
+
+  &::before {
+    @include yellow-button-before;
+  }
+  &::after {
+    @include yellow-button-after;
+  }
+  &:hover::before {
+    @include yellow-button-hover-before;
+  }
+}
+
+.result-slide-open {
+  &-enter-active,
+  &-leave-active {
+    transition: opacity 1s ease;
+  }
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+  }
+}
+
+.result {
+  &-box {
+    > div {
+      margin: $bottomFifty;
+    }
+  }
+  &-nan {
+    @include x-large-font;
+    text-align: center;
+  }
+
+  &-common {
+    @include flex-center;
+    height: 250px;
+    margin-bottom: 50px;
+    gap: 24px;
+
+    div {
+      img {
+        height: 250px;
+      }
+    }
+
+    div:last-child {
+      @include large-font;
+      width: fit-content;
+
+      p {
+        display: inline-block;
+        position: relative;
+        padding: 20px;
+        border-radius: 5px;
+        margin: 50px 0;
+        text-align: center;
+        border: $border;
+
+        &::after,
+        &::before {
+          border: solid transparent;
+          content: "";
+          height: 0;
+          width: 0;
+          pointer-events: none;
+          position: absolute;
+          right: 100%;
+          top: 50%;
+        }
+
+        &::after {
+          border-color: rgba(255, 255, 255, 0);
+          border-top-width: 10px;
+          border-bottom-width: 10px;
+          border-left-width: 10px;
+          border-right-width: 10px;
+          margin-top: -10px;
+          border-right-color: #ffffff;
+        }
+
+        &::before {
+          border-color: rgba(33, 33, 33, 0);
+          border-top-width: 13px;
+          border-bottom-width: 13px;
+          border-left-width: 13px;
+          border-right-width: 13px;
+          margin-top: -13px;
+          margin-right: 1px;
+          border-right-color: $black;
+        }
+      }
+    }
+  }
+
+  &-various {
+    > div:last-child {
+      margin-left: 100px;
+    }
+  }
+
+  &-share {
+    &-sns {
+      @include flex-space-between;
+      margin-bottom: 50px;
+    }
+
+    > div {
+      position: relative;
+    }
+
+    button {
+      background-color: $yellow;
+      font-size: 2rem;
+      font-weight: 600;
+      cursor: pointer;
+      width: 300px;
+      border: none;
+      position: relative;
+
+      &::before {
+        @include yellow-button-before;
+      }
+      &::after {
+        @include yellow-button-after;
+      }
+      &:hover::before {
+        @include yellow-button-hover-before;
+      }
+
+      > p {
+        margin: 20px 50px 0 50px;
+      }
+    }
+
+    img {
+      height: 120px;
+      position: absolute;
+    }
+
+    &-twitter {
+      img {
+        left: 0;
+      }
+      p {
+        text-align: right;
+      }
+    }
+    &-line {
+      img {
+        left: 0;
+      }
+      p {
+        text-align: right;
+      }
+    }
+    &-copy {
+      display: flex;
+      justify-content: center;
+      img {
+        right: 0;
+      }
+      p {
+        text-align: left;
+      }
+    }
+  }
+}
+
+.again {
+  width: fit-content;
+  height: 85px;
+  margin: 100px auto 50px auto;
+  &-button {
+    @include large-font;
+    position: relative;
+    background-color: $yellow;
+    border: none;
+    width: 320px;
+    cursor: pointer;
+
+    &::before {
+      @include yellow-button-before;
+    }
+    &::after {
+      @include yellow-button-after;
+    }
+    &:hover::before {
+      @include yellow-button-hover-before;
+    }
+
+    p {
+      margin: 20px 50px 0 120px;
+    }
+
+    img {
+      position: absolute;
+      height: 170px;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}
