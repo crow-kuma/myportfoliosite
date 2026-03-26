@@ -2,10 +2,8 @@ $black: #212121;
 $yellow: #fdd835;
 $lightblue: #47d1ff;
 $pink: #ff729f;
-
 $border: 3px solid #212121;
-
-$bottomFifty: 0 auto 50px auto;
+$bottom-fifty: 0 auto 50px auto;
 
 @mixin flex-column {
   display: flex;
@@ -44,7 +42,7 @@ $bottomFifty: 0 auto 50px auto;
 }
 
 @mixin yellow-button-before {
-  content: "";
+  content: '';
   position: absolute;
   top: -7px;
   left: -7px;
@@ -55,7 +53,7 @@ $bottomFifty: 0 auto 50px auto;
 }
 
 @mixin yellow-button-after {
-  content: "";
+  content: '';
   width: 5px;
   height: 5px;
   border-top: 3px solid $yellow;
@@ -69,7 +67,7 @@ $bottomFifty: 0 auto 50px auto;
 }
 
 @mixin icon-sns-before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -94,7 +92,7 @@ body {
   max-width: 700px;
   margin: 0 auto;
   font-family:
-    "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+    'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans',
     Meiryo, sans-serif;
   font-weight: normal;
   color: $black;
@@ -108,6 +106,7 @@ header {
 
 .title {
   position: relative;
+
   h1 {
     display: inline-block;
     position: absolute;
@@ -118,6 +117,7 @@ header {
     width: 700px;
     height: 220px;
     position: relative;
+
     img {
       height: 220px;
       position: absolute;
@@ -130,18 +130,22 @@ header {
 .fall-in-title {
   animation: fall-in-title 1s ease-in both;
 }
+
 @keyframes fall-in-title {
   0% {
     transform: translateY(-500px);
     opacity: 0;
   }
+
   80% {
     transform: translateY(0);
     opacity: 1;
   }
+
   90% {
     transform: translateY(-20px);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -156,6 +160,7 @@ header {
   0% {
     transform: translateY(-500px);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -163,6 +168,7 @@ header {
 
 .select-menu {
   @include flex-space-between;
+
   margin-bottom: 50px;
 
   > div {
@@ -185,6 +191,7 @@ header {
 
   &-button {
     @include x-large-font;
+
     position: relative;
     display: inline-block;
     margin-top: 20px;
@@ -197,7 +204,6 @@ header {
 }
 
 .select-menu-balloon {
-  height: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -211,23 +217,21 @@ header {
   height: auto;
   text-align: center;
   border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
 
   &::after,
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     border: 12px solid transparent;
     top: 100%;
     left: 47%;
   }
 
-  &:before {
+  &::before {
     border-top: 20px solid $black;
   }
 
-  &:after {
+  &::after {
     margin-top: -4px;
     border-top: 20px solid #fff;
   }
@@ -235,19 +239,24 @@ header {
 
 .main-input {
   @include flex-column-center;
+
   margin-bottom: 50px;
+
   &-box {
     margin: 15px 0;
     display: flex;
     justify-content: center;
+
     > label {
       @include x-large-font;
+
       display: inline-block;
       width: 100px;
       background-color: $yellow;
       border-bottom: $border;
       padding: 5px 0 0 5px;
     }
+
     > input {
       width: 400px;
       height: 70px;
@@ -261,10 +270,13 @@ header {
 .main-summary {
   @include flex-column-center;
   @include x-large-font;
+
   margin-bottom: 50px;
+
   p {
     margin: 0;
   }
+
   p:first-child {
     padding-bottom: 10px;
   }
@@ -272,10 +284,11 @@ header {
 
 .main-button {
   @include x-large-font;
+
   position: relative;
   background-color: $yellow;
   display: block;
-  margin: $bottomFifty;
+  margin: $bottom-fifty;
   padding: 15px 100px;
   border: none;
   cursor: pointer;
@@ -283,9 +296,11 @@ header {
   &::before {
     @include yellow-button-before;
   }
+
   &::after {
     @include yellow-button-after;
   }
+
   &:hover::before {
     @include yellow-button-hover-before;
   }
@@ -296,6 +311,7 @@ header {
   &-leave-active {
     transition: opacity 1s ease;
   }
+
   &-enter-from,
   &-leave-to {
     opacity: 0;
@@ -305,16 +321,19 @@ header {
 .result {
   &-box {
     > div {
-      margin: $bottomFifty;
+      margin: $bottom-fifty;
     }
   }
+
   &-nan {
     @include x-large-font;
+
     text-align: center;
   }
 
   &-common {
     @include flex-center;
+
     height: 250px;
     margin-bottom: 50px;
     gap: 24px;
@@ -327,6 +346,7 @@ header {
 
     div:last-child {
       @include large-font;
+
       width: fit-content;
 
       p {
@@ -341,7 +361,7 @@ header {
         &::after,
         &::before {
           border: solid transparent;
-          content: "";
+          content: '';
           height: 0;
           width: 0;
           pointer-events: none;
@@ -351,21 +371,15 @@ header {
         }
 
         &::after {
-          border-color: rgba(255, 255, 255, 0);
-          border-top-width: 10px;
-          border-bottom-width: 10px;
-          border-left-width: 10px;
-          border-right-width: 10px;
+          border-color: rgb(255 255 255 / 0%);
+          border-width: 10px;
           margin-top: -10px;
-          border-right-color: #ffffff;
+          border-right-color: #fff;
         }
 
         &::before {
-          border-color: rgba(33, 33, 33, 0);
-          border-top-width: 13px;
-          border-bottom-width: 13px;
-          border-left-width: 13px;
-          border-right-width: 13px;
+          border-color: rgb(33 33 33 / 0%);
+          border-width: 13px;
           margin-top: -13px;
           margin-right: 1px;
           border-right-color: $black;
@@ -383,6 +397,7 @@ header {
   &-share {
     &-sns {
       @include flex-space-between;
+
       margin-bottom: 50px;
     }
 
@@ -402,15 +417,17 @@ header {
       &::before {
         @include yellow-button-before;
       }
+
       &::after {
         @include yellow-button-after;
       }
+
       &:hover::before {
         @include yellow-button-hover-before;
       }
 
       > p {
-        margin: 20px 50px 0 50px;
+        margin: 20px 50px 0;
       }
     }
 
@@ -423,24 +440,30 @@ header {
       img {
         left: 0;
       }
+
       p {
         text-align: right;
       }
     }
+
     &-line {
       img {
         left: 0;
       }
+
       p {
         text-align: right;
       }
     }
+
     &-copy {
       display: flex;
       justify-content: center;
+
       img {
         right: 0;
       }
+
       p {
         text-align: left;
       }
@@ -451,9 +474,11 @@ header {
 .again {
   width: fit-content;
   height: 85px;
-  margin: 100px auto 50px auto;
+  margin: 100px auto 50px;
+
   &-button {
     @include large-font;
+
     position: relative;
     background-color: $yellow;
     border: none;
@@ -463,9 +488,11 @@ header {
     &::before {
       @include yellow-button-before;
     }
+
     &::after {
       @include yellow-button-after;
     }
+
     &:hover::before {
       @include yellow-button-hover-before;
     }

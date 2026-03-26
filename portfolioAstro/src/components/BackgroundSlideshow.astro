@@ -47,13 +47,14 @@ const {
     pointer-events: none;
     z-index: 2; /* .slideより上、.contentより下に調整 */
     background-image:
-      radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
-      radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+      radial-gradient(circle, rgb(255 255 255 / 30%) 1px, transparent 1px),
+      radial-gradient(circle, rgb(255 255 255 / 30%) 1px, transparent 1px);
     background-position:
       0 0,
       2.5px 5px;
     background-size: 5px 10px;
   }
+
   .slide {
     position: absolute;
     width: 100%;
@@ -68,15 +69,19 @@ const {
     0% {
       opacity: 0;
     }
+
     8% {
       opacity: 1;
     }
+
     45% {
       opacity: 1;
     }
+
     55% {
       opacity: 0;
     }
+
     100% {
       opacity: 0;
     }

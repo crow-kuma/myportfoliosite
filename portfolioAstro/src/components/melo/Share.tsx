@@ -1,11 +1,11 @@
-import imgMeloTwitter from "../../images/melo/MelodyLaneTwitter.png";
-import imgMeloLine from "../../images/melo/MelodyLaneLine.png";
-import imgMeloCopy from "../../images/melo/MelodyLaneCopy.png";
-import imgMeloCopied from "../../images/melo/MelodyLaneCopied.png";
-import imgMeloAgain from "../../images/melo/MelodyLaneAgain.png";
-import imgMeloFlying from "../../images/melo/MelodyLaneFlying.png";
-import type { VariousResultType } from "./MeloApp";
-import { useState, useRef } from "react";
+import imgMeloTwitter from '../../images/melo/MelodyLaneTwitter.png';
+import imgMeloLine from '../../images/melo/MelodyLaneLINE.png';
+import imgMeloCopy from '../../images/melo/MelodyLaneCopy.png';
+import imgMeloCopied from '../../images/melo/MelodyLaneCopied.png';
+import imgMeloAgain from '../../images/melo/MelodyLaneAgain.png';
+import imgMeloFlying from '../../images/melo/MelodyLaneFlying.png';
+import type { VariousResultType } from './MeloApp';
+import { useState, useRef, useEffect } from 'react';
 
 type ShareProps = {
   isStandard: boolean;
@@ -28,12 +28,17 @@ export default function Share({
   setWeight,
   setWeightName,
 }: ShareProps) {
-  const URL: string = "https://kumanocrow.netlify.app/playground/melo";
+  const URL: string = 'https://kumanocrow.netlify.app/playground/melo';
   const weightData: string = `${weight}kgの${weightName}は…`;
-  const result: string = isStandard
-    ? `${standardResult}メロディーレーンです！`
-    : `${variousResult?.variousResult}メロディーレーン\n${variousResult?.variousResultBB}うまれたてのメロディーレーン\nそしてにんじん${variousResult?.variousResultCarrot}本です！`;
+  let result: string = '';
+  if (isStandard) {
+    result = `${standardResult}メロディーレーンです！`;
+  } else {
+    if (!variousResult) return;
+    result = `${variousResult.variousResult}メロディーレーン\n${variousResult.variousResultBB}うまれたてのメロディーレーン\nそしてにんじん${variousResult.variousResultCarrot}本です！`;
+  }
   const text = `【それって何メロディーレーン？】\n${weightData}\n${result}`;
+
   return (
     <div className="result-share">
       <div className="result-share-sns">
@@ -51,12 +56,12 @@ export default function Share({
 }
 
 const TwitterShareButton = ({ text, url }: { text: string; url: string }) => {
-  const hashtags = ["#それって何メロディーレーン"];
+  const hashtags = ['#それって何メロディーレーン'];
   const handleShareToX = () => {
-    const xUrl = new URL("https://x.com/intent/tweet");
-    xUrl.searchParams.append("text", text + "\n\n" + hashtags.join(" ") + "\n");
-    xUrl.searchParams.append("url", url);
-    window.open(xUrl.toString(), "_blank", "noopener,noreferrer");
+    const xUrl = new URL('https://x.com/intent/tweet');
+    xUrl.searchParams.append('text', text + '\n\n' + hashtags.join(' ') + '\n');
+    xUrl.searchParams.append('url', url);
+    window.open(xUrl.toString(), '_blank', 'noopener,noreferrer');
   };
   return (
     <div className="result-share-twitter">
@@ -70,10 +75,10 @@ const TwitterShareButton = ({ text, url }: { text: string; url: string }) => {
 
 const LineShareButton = ({ text, url }: { text: string; url: string }) => {
   const handleShareToLine = () => {
-    const lineUrl = new URL("https://social-plugins.line.me/lineit/share");
-    lineUrl.searchParams.append("text", text);
-    lineUrl.searchParams.append("url", url);
-    window.open(lineUrl.toString(), "_blank", "noopener,noreferrer");
+    const lineUrl = new URL('https://social-plugins.line.me/lineit/share');
+    lineUrl.searchParams.append('text', text);
+    lineUrl.searchParams.append('url', url);
+    window.open(lineUrl.toString(), '_blank', 'noopener,noreferrer');
   };
   return (
     <div className="result-share-line">
@@ -87,14 +92,18 @@ const LineShareButton = ({ text, url }: { text: string; url: string }) => {
 
 const CopyButton = ({ text, url }: { text: string; url: string }) => {
   const [hasCopied, setHasCopied] = useState<boolean>(false);
-  const handleCopy = () => {
-    console.log(hasCopied);
-    navigator.clipboard.writeText(text + "\n" + url);
-    setHasCopied(true);
-    setTimeout(() => {
-      setHasCopied(false);
-    }, 2000);
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(text + '\n' + url);
+      setHasCopied(true);
+      setTimeout(() => {
+        setHasCopied(false);
+      }, 2000);
+    } catch (error) {
+      console.error('Failed to copy text: ', error);
+    }
   };
+
   return (
     <div className="result-share-copy">
       <button type="button" onClick={handleCopy}>
@@ -124,73 +133,90 @@ const AgainButton = ({
   setWeightName: (weightName: string) => void;
 }) => {
   const [currentImage, setCurrentImage] = useState(imgMeloAgain.src);
-  const [altText, setAltText] = useState("ほうきを持つメロディーレーン");
+  const [altText, setAltText] = useState('ほうきを持つメロディーレーン');
   const imageRef = useRef<HTMLImageElement>(null);
+  const isAnimating = useRef(false);
+  const timeoutIds = useRef<number[]>([]);
+
+  useEffect(() => {
+    return () => {
+      timeoutIds.current.forEach(clearTimeout);
+    };
+  }, []);
 
   const againScrollToTop = () => {
-    if (!imageRef.current) return;
+    if (isAnimating.current || !imageRef.current) return;
+    isAnimating.current = true;
 
     // Phase 1: Fade out
-    imageRef.current.style.transition = "opacity 0.2s";
-    imageRef.current.style.opacity = "0";
+    imageRef.current.style.transition = 'opacity 0.2s';
+    imageRef.current.style.opacity = '0';
 
-    setTimeout(() => {
+    const t1 = window.setTimeout(() => {
       // Phase 2: Switch to flying image and reset positions
       setCurrentImage(imgMeloFlying.src);
-      setAltText("ほうきで飛ぶメロディーレーン");
+      setAltText('ほうきで飛ぶメロディーレーン');
 
       if (imageRef.current) {
-        imageRef.current.style.transition = "opacity 0.2s";
-        imageRef.current.style.opacity = "1";
-        imageRef.current.style.height = "150px";
-        imageRef.current.style.bottom = "0px";
-        imageRef.current.style.left = "-20px";
-        imageRef.current.style.transform = "translateY(0)";
+        imageRef.current.style.transition = 'opacity 0.2s';
+        imageRef.current.style.opacity = '1';
+        imageRef.current.style.height = '150px';
+        imageRef.current.style.bottom = '0px';
+        imageRef.current.style.left = '-20px';
+        imageRef.current.style.transform = 'translateY(0)';
       }
     }, 200);
+    timeoutIds.current.push(t1);
 
-    setTimeout(() => {
+    const t2 = window.setTimeout(() => {
       // Phase 3: Slight dip before flying up
       if (imageRef.current) {
-        imageRef.current.style.transition = "bottom 0.3s ease-in";
-        imageRef.current.style.bottom = "-40px";
+        imageRef.current.style.transition = 'bottom 0.3s ease-in';
+        imageRef.current.style.bottom = '-40px';
       }
     }, 800);
+    timeoutIds.current.push(t2);
 
-    setTimeout(() => {
+    const t3 = window.setTimeout(() => {
       // Phase 4: Fly up!
       if (imageRef.current) {
-        imageRef.current.style.transition = "transform 1.5s ease-in-out";
-        imageRef.current.style.transform = "translateY(-300vh)";
+        imageRef.current.style.transition = 'transform 1.5s ease-in-out';
+        imageRef.current.style.transform = 'translateY(-300vh)';
       }
     }, 1200);
+    timeoutIds.current.push(t3);
 
-    setTimeout(() => {
+    const t4 = window.setTimeout(() => {
       // Phase 5: Scroll to top
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 1500);
+    timeoutIds.current.push(t4);
 
-    setTimeout(() => {
+    const t5 = window.setTimeout(() => {
       // Phase 6: Reset to original state
       setCurrentImage(imgMeloAgain.src);
-      setAltText("ほうきを持つメロディーレーン");
+      setAltText('ほうきを持つメロディーレーン');
 
       if (imageRef.current) {
-        imageRef.current.style.transition = "opacity 0.5s";
-        imageRef.current.style.opacity = "";
-        imageRef.current.style.height = "170px";
-        imageRef.current.style.bottom = "0px";
-        imageRef.current.style.left = "0";
-        imageRef.current.style.transform = "";
+        imageRef.current.style.transition = 'opacity 0.5s';
+        imageRef.current.style.opacity = '';
+        imageRef.current.style.height = '170px';
+        imageRef.current.style.bottom = '0px';
+        imageRef.current.style.left = '0';
+        imageRef.current.style.transform = '';
       }
     }, 2500);
+    timeoutIds.current.push(t5);
 
     // アニメーションが終わってから、多少の余裕を持ってリセット
-    setTimeout(() => {
+    const t6 = window.setTimeout(() => {
       setWeight(0);
-      setWeightName("");
+      setWeightName('');
       setIsResultOpen(false);
+      isAnimating.current = false;
+      timeoutIds.current = [];
     }, 3000);
+    timeoutIds.current.push(t6);
   };
 
   return (

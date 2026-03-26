@@ -28,6 +28,7 @@ export default function ModeSwitch({
           className={`select-menu-button ${
             isStandard ? "selected-standard" : ""
           }`}
+          aria-pressed={isStandard}
           onClick={standardModeSwitch}
         >
           標準モード
@@ -46,6 +47,7 @@ export default function ModeSwitch({
         <button
           type="button"
           className={`select-menu-button ${isStandard ? "" : "selected-various"}`}
+          aria-pressed={!isStandard}
           onClick={variousModeSwitch}
         >
           いろいろモード

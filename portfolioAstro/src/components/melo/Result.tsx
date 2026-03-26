@@ -13,13 +13,11 @@ export default function Result({
   standardResult,
   variousResult,
 }: ResultProps) {
+  if (isStandard) {
+    return <StandardSum standardResult={standardResult} />;
+  }
   if (!variousResult) return null;
-
-  return isStandard ? (
-    <StandardSum standardResult={standardResult} />
-  ) : (
-    <VariousSum variousResult={variousResult} />
-  );
+  return <VariousSum variousResult={variousResult} />;
 }
 
 type StandardSumProps = {
