@@ -39,7 +39,6 @@
  * See https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably/
  */
 :where(html) {
-  -webkit-text-size-adjust: none;
   text-size-adjust: none;
 }
 
@@ -48,6 +47,7 @@
  *
  * Long paragraphs are easier to read if the line height is higher.
  */
+/* stylelint-disable-next-line no-duplicate-selectors */
 :where(html) {
   line-height: 1.5;
 }
@@ -58,6 +58,7 @@
  * Prevent the page from “jumping” when switching from a long to a short page.
  *
  */
+/* stylelint-disable-next-line no-duplicate-selectors */
 :where(html) {
   scrollbar-gutter: stable;
 }
@@ -134,31 +135,31 @@
   overflow: hidden;
   position: absolute;
   white-space: nowrap;
-  content: "";
+  content: '';
 }
 
 :where(s)::before {
-  content: "stricken text start ";
+  content: 'stricken text start ';
 }
 
 :where(s)::after {
-  content: " stricken text end";
+  content: ' stricken text end';
 }
 
 :where(del)::before {
-  content: "deletion start ";
+  content: 'deletion start ';
 }
 
 :where(del)::after {
-  content: " deletion end";
+  content: ' deletion end';
 }
 
 :where(ins)::before {
-  content: "insertion start ";
+  content: 'insertion start ';
 }
 
 :where(ins)::after {
-  content: " insertion end";
+  content: ' insertion end';
 }
 
 /**
@@ -221,13 +222,13 @@
  * Remove the rounded corners of search inputs on macOS and IOS 
  * and normalize the background color
  */
-:where([type="search"]) {
-  -webkit-appearance: textfield;
+:where([type='search']) {
+  appearance: textfield;
 }
 
 /* iOS only */
 @supports (-webkit-touch-callout: none) {
-  :where([type="search"]) {
+  :where([type='search']) {
     border: 1px solid -apple-system-secondary-label;
     background-color: canvas;
   }
@@ -242,7 +243,7 @@
  *
  * See https://rtlstyling.com/posts/rtl-styling#form-inputs
  */
-:where([type="tel"], [type="url"], [type="email"], [type="number"]):not(
+:where([type='tel'], [type='url'], [type='email'], [type='number']):not(
   :placeholder-shown
 ) {
   direction: ltr;
@@ -271,8 +272,8 @@
  * and backdrops
  */
 :where(dialog)::backdrop {
-  background: rgba(0, 0, 0, 0.3);
-  background: oklch(0% 0 0 / 0.3);
+  background: rgb(0 0 0 / 30%);
+  background: oklch(0% 0 0deg / 30%);
 }
 
 :where(dialog),
@@ -303,6 +304,6 @@
  * [hidden] attribute while still maintaining the until-found 
  * functionality.
  */
-[hidden]:not([hidden="until-found"]) {
+[hidden]:not([hidden='until-found']) {
   display: none !important;
 }

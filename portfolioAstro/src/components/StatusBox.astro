@@ -26,17 +26,19 @@ const statusDoc = await sanityClient.fetch<SanityDocument | null>(STATUS_QUERY);
     padding: 4px 8px;
     background: var(--dark-gray);
     border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgb(0 0 0 / 5%);
     width: fit-content;
   }
+
   .status-light {
     width: 16px;
     height: 16px;
     border-radius: 50%;
     flex-shrink: 0;
     position: relative;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 1px solid rgb(0 0 0 / 20%);
   }
+
   .status-light::after {
     content: "";
     position: absolute;
@@ -44,32 +46,37 @@ const statusDoc = await sanityClient.fetch<SanityDocument | null>(STATUS_QUERY);
     left: 2px;
     width: 3px;
     height: 3px;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgb(255 255 255 / 80%);
     border-radius: 50%;
   }
+
   .status-light.ok {
     background: radial-gradient(circle at 30% 30%, #a5d6a7, #4caf50);
     box-shadow:
-      inset -1px -1px 2px rgba(0, 0, 0, 0.2),
-      0 0 8px rgba(76, 175, 80, 0.6);
+      inset -1px -1px 2px rgb(0 0 0 / 20%),
+      0 0 8px rgb(76 175 80 / 60%);
   }
+
   .status-light.ng {
     background: radial-gradient(circle at 30% 30%, #ef9a9a, #f44336);
     box-shadow:
-      inset -1px -1px 2px rgba(0, 0, 0, 0.2),
-      0 0 8px rgba(244, 67, 54, 0.6);
+      inset -1px -1px 2px rgb(0 0 0 / 20%),
+      0 0 8px rgb(244 67 54 / 60%);
   }
+
   .status-light.maybe {
     background: radial-gradient(circle at 30% 30%, #fff59d, #ffeb3b);
     box-shadow:
-      inset -1px -1px 2px rgba(0, 0, 0, 0.2),
-      0 0 8px rgba(255, 235, 59, 0.6);
+      inset -1px -1px 2px rgb(0 0 0 / 20%),
+      0 0 8px rgb(255 235 59 / 60%);
   }
+
   .status-text {
     font-weight: 900;
     color: var(--white);
     white-space: nowrap;
   }
+
   .status-comment {
     color: var(--white);
     white-space: nowrap;

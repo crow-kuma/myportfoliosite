@@ -27,12 +27,14 @@ const { title, tabClass, gridClass, gridColumns = 4 } = Astro.props;
     grid-template-columns: repeat(var(--grid-cols), 1fr);
     gap: 30px;
   }
-  @media (max-width: 1024px) {
+
+  @media (width <= 1024px) {
     .banner-grid {
       grid-template-columns: repeat(min(var(--grid-cols), 2), 1fr);
     }
   }
-  @media (max-width: 600px) {
+
+  @media (width <= 600px) {
     .banner-grid {
       grid-template-columns: 1fr;
     }

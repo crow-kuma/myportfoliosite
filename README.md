@@ -43,10 +43,10 @@ This runs:
 
 ## 🧠 Technologies Used
 
-- [Astro](https://astro.build/) (`6.0.5`) – Static site generator for modern web (Target: Netlify static).
+- [Astro](https://astro.build/) (`6.0.8`) – Static site generator for modern web (Target: Netlify static).
 - [Vite](https://vitejs.dev/) (`7.3.1`) – Build tool used by Astro for lightning-fast bundling.
 - [React](https://react.dev/) (`19.2.4`) – UI framework for client interactivity.
-- [Sanity](https://www.sanity.io/) (`5.16.0` Studio, `7.17.0` Client) – Headless CMS backend with live editor.
+- [Sanity](https://www.sanity.io/) (`5.18.0` Studio, `7.17.0` Client) – Headless CMS backend with live editor.
 
 ---
 

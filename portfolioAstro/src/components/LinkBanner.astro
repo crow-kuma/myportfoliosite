@@ -22,25 +22,30 @@ const { href, src, alt, label } = Astro.props;
     padding: 8px;
     border-radius: 8px;
     background: #fff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgb(0 0 0 / 5%);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 1px solid rgba(0, 0, 0, 0.03);
+    border: 1px solid rgb(0 0 0 / 3%);
   }
+
   .banner-link:focus {
-    outline: 2px solid #0066cc;
+    outline: 2px solid #06c;
     outline-offset: 2px;
   }
+
   .banner-link:focus:not(:focus-visible) {
     outline: none;
   }
+
   .banner-link:focus-visible {
-    outline: 2px solid #0066cc;
+    outline: 2px solid #06c;
     outline-offset: 2px;
   }
+
   .banner-link:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgb(0 0 0 / 10%);
   }
+
   .banner-link img {
     height: 32px;
     width: auto;
