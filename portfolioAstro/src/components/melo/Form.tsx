@@ -1,5 +1,5 @@
-import type { VariousResultType } from './MeloApp';
-import { useEffect } from 'react';
+import { useEffect } from "react";
+import type { VariousResultType } from "./MeloApp";
 
 type FormProps = {
   weight: number;
@@ -29,16 +29,16 @@ export default function Form({
   const standardResult: number = Math.round((weight / MELO_WEIGHT) * 100) / 100;
   const variousResult: number = Math.floor(weight / MELO_WEIGHT);
   const variousResultBB: number = Math.floor(
-    (weight % MELO_WEIGHT) / MELO_BB_WEIGHT
+    (weight % MELO_WEIGHT) / MELO_BB_WEIGHT,
   );
   const variousResultCarrot: number = Math.round(
-    ((weight % MELO_WEIGHT) % MELO_BB_WEIGHT) / CARROT_WEIGHT
+    ((weight % MELO_WEIGHT) % MELO_BB_WEIGHT) / CARROT_WEIGHT,
   );
 
   useEffect(() => {
     if (!isResultOpen) {
       setWeight(0);
-      setWeightName('');
+      setWeightName("");
     }
   }, [isResultOpen, setWeight, setWeightName]);
 
@@ -54,9 +54,9 @@ export default function Form({
 
   useEffect(() => {
     if (!isResultOpen) return;
-    const el = document.getElementById('result');
+    const el = document.getElementById("result");
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      el.scrollIntoView({ behavior: "smooth" });
     }
   }, [isResultOpen]);
 
@@ -76,7 +76,7 @@ export default function Form({
               const nextWeight: number = e.target.valueAsNumber;
               setWeight(Number.isNaN(nextWeight) ? 0 : nextWeight);
             }}
-            value={weight === 0 ? '' : weight}
+            value={weight === 0 ? "" : weight}
           />
         </div>
         <div className="main-input-box">
@@ -94,8 +94,8 @@ export default function Form({
         </div>
       </div>
       <div className="main-summary">
-        <p>{weight === 0 ? '？？？' : weight}kgの</p>
-        <p>{weightName === '' ? '？？？' : weightName}は…</p>
+        <p>{weight === 0 ? "？？？" : weight}kgの</p>
+        <p>{weightName === "" ? "？？？" : weightName}は…</p>
       </div>
       <button type="button" className="main-button" onClick={handleSum}>
         何メロディーレーン？

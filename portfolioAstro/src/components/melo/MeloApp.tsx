@@ -1,9 +1,9 @@
-import { createContext, useState, useContext } from "react";
-import Title from "./Title";
-import ModeSwitch from "./ModeSwitch";
+import { createContext, useContext, useState } from "react";
 import Form from "./Form";
-import Share from "./Share";
+import ModeSwitch from "./ModeSwitch";
 import Result from "./Result";
+import Share from "./Share";
+import Title from "./Title";
 
 interface ResultContextType {
   standardResult: number;
@@ -13,14 +13,14 @@ interface ResultContextType {
 }
 
 export const ResultContext = createContext<ResultContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export const useResultContext = (): ResultContextType => {
   const ctx = useContext(ResultContext);
   if (!ctx) {
     throw new Error(
-      "useResultContext must be used within ResultContext.Provider"
+      "useResultContext must be used within ResultContext.Provider",
     );
   }
   return ctx;

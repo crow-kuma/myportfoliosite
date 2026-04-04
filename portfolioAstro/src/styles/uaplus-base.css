@@ -4,13 +4,13 @@
 
 /**
  * Different box model
- * 
- * We use the traditional box model, where the padding and border 
- * of the element is drawn inside and not outside the specified 
- * width and height. That makes combining relative and absolute 
- * units in properties like <code>inline-size</code> and 
+ *
+ * We use the traditional box model, where the padding and border
+ * of the element is drawn inside and not outside the specified
+ * width and height. That makes combining relative and absolute
+ * units in properties like <code>inline-size</code> and
  * <code>block-size</code> easier.
- * 
+ *
  * See https://en.wikipedia.org/wiki/CSS_box_model
  */
 *,
@@ -30,10 +30,10 @@
 
 /**
  * Disable text size adjustment
- * 
+ *
  * To improve readability on non-mobile optimized websites, browsers
  * like mobile Safari increase the default font size when you switch
- * a website from portrait to landscape. We don't want that for our 
+ * a website from portrait to landscape. We don't want that for our
  * optimized sites.
  *
  * See https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably/
@@ -66,10 +66,10 @@
 /**
  * Remove UA styles for h1s nested in sectioning content
  *
- * Nesting h1s in section, articles, etc., shouldn't influence the 
- * styling of the heading since nesting doesn't influence 
+ * Nesting h1s in section, articles, etc., shouldn't influence the
+ * styling of the heading since nesting doesn't influence
  * semantics either.
- * 
+ *
  * See https://github.com/whatwg/html/issues/7867#issuecomment-2632395167
  * See https://github.com/whatwg/html/pull/11102
  * See https://html.spec.whatwg.org/#sections-and-headings
@@ -81,13 +81,13 @@
 
 /**
  * Improve abbreviations with titles
- * 
- * The abbr element with the title isn't helpful regarding 
- * accessibility because support is inconsistent, and it's only 
- * accessible to some users. Still, it's commonly used. 
- * This rule shows a dotted underline on abbreviations in all 
+ *
+ * The abbr element with the title isn't helpful regarding
+ * accessibility because support is inconsistent, and it's only
+ * accessible to some users. Still, it's commonly used.
+ * This rule shows a dotted underline on abbreviations in all
  * browsers (there's a bug in Safari) and changes the cursor.
- * 
+ *
  * See https://adrianroselli.com/2024/01/using-abbr-element-with-title-attribute.html
  */
 :where(abbr[title]) {
@@ -101,7 +101,7 @@
  *
  * The colors of the mark element don't change in Forced Colors Mode,
  * which can be problematic. Use system colors instead.
- * 
+ *
  * See https://adrianroselli.com/2017/12/tweaking-text-level-styles.html#MarkWHCM
  */
 @media (forced-colors: active) {
@@ -113,18 +113,18 @@
 
 /**
  * Announce del, ins, and s to screen readers
- * 
+ *
  * With the exception of NVDA (2024.4.2), which announces "deletion",
  * none of the common screen readers announces the <s> element.
- * Voice Over on macOS and iOS and Narrator don't announce 
+ * Voice Over on macOS and iOS and Narrator don't announce
  * <ins> and <del>. Usually, screen readers not announcing text-level
- * semantics is something we just accept, but devs using elements 
- * like <s> without knowing that they may not convey semantics is a 
+ * semantics is something we just accept, but devs using elements
+ * like <s> without knowing that they may not convey semantics is a
  * common issue. We announce the start and end of stricken, inserted,
- * and deleted content with pseudo-elements. For languages other 
- * than English, you should provide translations, e.g. :lang(de) 
+ * and deleted content with pseudo-elements. For languages other
+ * than English, you should provide translations, e.g. :lang(de)
  * :where(s::before) { content: "Durchgestrichener Text Beginn "; }
- * 
+ *
  * See https://adrianroselli.com/2017/12/tweaking-text-level-styles.html
  */
 :where(del, ins, s)::before,
@@ -135,37 +135,37 @@
   overflow: hidden;
   position: absolute;
   white-space: nowrap;
-  content: '';
+  content: "";
 }
 
 :where(s)::before {
-  content: 'stricken text start ';
+  content: "stricken text start ";
 }
 
 :where(s)::after {
-  content: ' stricken text end';
+  content: " stricken text end";
 }
 
 :where(del)::before {
-  content: 'deletion start ';
+  content: "deletion start ";
 }
 
 :where(del)::after {
-  content: ' deletion end';
+  content: " deletion end";
 }
 
 :where(ins)::before {
-  content: 'insertion start ';
+  content: "insertion start ";
 }
 
 :where(ins)::after {
-  content: ' insertion end';
+  content: " insertion end";
 }
 
 /**
  * Avoid overflow caused by embedded content
- * 
- * Ensure that embedded content (audio, video, images, etc.) 
+ *
+ * Ensure that embedded content (audio, video, images, etc.)
  * doesn't overflow its container.
  */
 :where(audio, iframe, img, svg, video) {
@@ -188,8 +188,8 @@
 
 /**
  * Turn labels into block elements
- * 
- * Labels for inputs, selects, and textarea should be block 
+ *
+ * Labels for inputs, selects, and textarea should be block
  * elements.
  */
 :where(label):has(+ :where(textarea, input, select)) {
@@ -207,7 +207,7 @@
 
 /**
  * Inherit font styling in form elements
- * 
+ *
  * buttons, inputs, selects, and textarea should have the same font
  * family and size as the rest of the page.
  */
@@ -218,17 +218,17 @@
 
 /**
  * Normalize search input styles
- *  
- * Remove the rounded corners of search inputs on macOS and IOS 
+ *
+ * Remove the rounded corners of search inputs on macOS and iOS
  * and normalize the background color
  */
-:where([type='search']) {
+:where([type="search"]) {
   appearance: textfield;
 }
 
 /* iOS only */
 @supports (-webkit-touch-callout: none) {
-  :where([type='search']) {
+  :where([type="search"]) {
     border: 1px solid -apple-system-secondary-label;
     background-color: canvas;
   }
@@ -236,23 +236,21 @@
 
 /**
  * Maintain direction in some input types
- * 
+ *
  * Some input types should remain left-aligned in right-to-left
- * languages,but only if the value isn't empty because the 
+ * languages,but only if the value isn't empty because the
  * placeholder should be right-aligned.
  *
  * See https://rtlstyling.com/posts/rtl-styling#form-inputs
  */
-:where([type='tel'], [type='url'], [type='email'], [type='number']):not(
-  :placeholder-shown
-) {
+:where([type="tel"], [type="url"], [type="email"], [type="number"]):not( :placeholder-shown) {
   direction: ltr;
 }
 
 /**
  * Improve table styling
- *  
- * With the default styling, tables are hard to scan. These rules 
+ *
+ * With the default styling, tables are hard to scan. These rules
  * add padding and collapsed borders.
  */
 :where(table) {
@@ -267,7 +265,7 @@
 
 /**
  * Fading dialogs
- *  
+ *
  * Add fade in and fade out transitions for the dialog element
  * and backdrops
  */
@@ -291,6 +289,7 @@
 }
 
 @starting-style {
+
   :where(dialog[open]),
   :where(dialog[open])::backdrop {
     opacity: 0;
@@ -299,11 +298,11 @@
 
 /**
  * Increase specificity of [hidden]
- *  
- * Make it harder to accidentally unhide elements with the 
- * [hidden] attribute while still maintaining the until-found 
+ *
+ * Make it harder to accidentally unhide elements with the
+ * [hidden] attribute while still maintaining the until-found
  * functionality.
  */
-[hidden]:not([hidden='until-found']) {
+[hidden]:not([hidden="until-found"]) {
   display: none !important;
 }

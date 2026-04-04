@@ -2,8 +2,20 @@
   "cSpell.words": [
     "Kumano",
     "lightgallery",
+    "melo",
     "portabletext",
     "TOEIC",
     "uaplus"
-  ]
+  ],
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.formatOnSave": true,
+  "[scss]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  }
 }

@@ -1,12 +1,12 @@
 module.exports = {
-  extends: ['stylelint-config-standard-scss', 'stylelint-config-html'],
+  extends: ["stylelint-config-standard-scss", "stylelint-config-html"],
 
-  plugins: ['stylelint-scss', 'stylelint-prettier'],
+  plugins: ["stylelint-scss"],
 
   rules: {
-    'prettier/prettier': true,
-    'no-descending-specificity': null,
+    "no-descending-specificity": null,
+    "rule-empty-line-before": null
   },
 
-  ignoreFiles: ['node_modules/**', '**/*.d.ts'],
+  ignoreFiles: ["node_modules/**", "**/*.d.ts"],
 };

@@ -1,13 +1,13 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import PageTitle from "../components/PageTitle.astro";
-import LinksSection from "../components/LinksSection.astro";
-import LinkBanner from "../components/LinkBanner.astro";
-import NotificationBox from "../components/NotificationBox.astro";
 import { sanityClient } from "sanity:client";
 import type { SanityDocument } from "@sanity/client";
-import { createImageUrlBuilder } from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
+import LinkBanner from "../components/LinkBanner.astro";
+import LinksSection from "../components/LinksSection.astro";
+import NotificationBox from "../components/NotificationBox.astro";
+import PageTitle from "../components/PageTitle.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 interface LinkBannerData extends SanityDocument {
   name: string;
@@ -37,13 +37,13 @@ const formattedSocial = social.map((banner) => ({
 }));
 
 const illustBanners = formattedSocial.filter(
-  (banner) => banner.category === "illustration"
+  (banner) => banner.category === "illustration",
 );
 const techBanners = formattedSocial.filter(
-  (banner) => banner.category === "tech"
+  (banner) => banner.category === "tech",
 );
 const otherBanners = formattedSocial.filter(
-  (banner) => banner.category === "other"
+  (banner) => banner.category === "other",
 );
 ---
 

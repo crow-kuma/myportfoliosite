@@ -1,12 +1,12 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import PageTitle from "../components/PageTitle.astro";
-import MyLightGallery from "../components/MyLightGallery.tsx";
 import { sanityClient } from "sanity:client";
 import type { SanityDocument } from "@sanity/client";
-import { createImageUrlBuilder } from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
+import MyLightGallery from "../components/MyLightGallery.tsx";
 import NewsBox from "../components/NewsBox.astro";
+import PageTitle from "../components/PageTitle.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "作品・お仕事情報";
 

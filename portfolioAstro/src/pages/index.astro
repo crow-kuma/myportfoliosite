@@ -1,12 +1,11 @@
 ---
-import type { SanityDocument } from "@sanity/client";
 import { sanityClient } from "sanity:client";
-import { createImageUrlBuilder } from "@sanity/image-url";
+import type { SanityDocument } from "@sanity/client";
 import type { SanityImageSource } from "@sanity/image-url";
-
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { createImageUrlBuilder } from "@sanity/image-url";
 import BackgroundSlideshow from "../components/BackgroundSlideshow.astro";
 import NewsBox from "../components/NewsBox.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const ARTWORK_QUERY = `*[_type == "artwork" && topPage == true]`;
 const artwork = await sanityClient
