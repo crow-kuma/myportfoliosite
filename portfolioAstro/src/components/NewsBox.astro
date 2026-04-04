@@ -1,6 +1,6 @@
 ---
-import type { SanityDocument } from "@sanity/client";
 import { sanityClient } from "sanity:client";
+import type { SanityDocument } from "@sanity/client";
 
 const NEWS_QUERY = `*[_type == "news" && public == true] | order(date desc)`;
 

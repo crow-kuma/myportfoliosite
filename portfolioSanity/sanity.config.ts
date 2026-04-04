@@ -1,18 +1,18 @@
-import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemaTypes'
+import { visionTool } from "@sanity/vision";
+import { defineConfig } from "sanity";
+import { structureTool } from "sanity/structure";
+import { schemaTypes } from "./schemaTypes";
 
 export default defineConfig({
-  name: 'default',
-  title: 'Portfolio',
+	name: "default",
+	title: "Portfolio",
 
-  projectId: '68vbgg4r',
-  dataset: 'production',
+	projectId: "68vbgg4r",
+	dataset: "production",
 
-  plugins: [structureTool(), visionTool()],
+	plugins: [structureTool(), visionTool()],
 
-  schema: {
-    types: schemaTypes,
-  },
-})
+	schema: {
+		types: schemaTypes,
+	},
+});

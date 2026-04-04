@@ -42,11 +42,32 @@ This runs:
 ---
 
 ## 🧠 Technologies Used
-
-- [Astro](https://astro.build/) (`6.0.8`) – Static site generator for modern web (Target: Netlify static).
+ 
+- [Astro](https://astro.build/) (`6.1.3`) – Static site generator for modern web (Target: Netlify static).
 - [Vite](https://vitejs.dev/) (`7.3.1`) – Build tool used by Astro for lightning-fast bundling.
 - [React](https://react.dev/) (`19.2.4`) – UI framework for client interactivity.
-- [Sanity](https://www.sanity.io/) (`5.18.0` Studio, `7.17.0` Client) – Headless CMS backend with live editor.
+- [Sanity](https://www.sanity.io/) (`5.19.0` Studio, `7.17.0` Client) – Headless CMS backend with live editor.
+- [Biome](https://biomejs.dev/) (`2.4.10`) – Fast formatter and linter for the web.
+- [Stylelint](https://stylelint.io/) (`16.9.0`) – Linter for CSS/SCSS and Astro files.
+ 
+---
+ 
+## 🧹 Linting & Formatting
+ 
+The project uses **Biome** for formatting and linting (JS/TS, React, Astro, JSON) and **Stylelint** for CSS/SCSS.
+ 
+### Biome
+Run these commands within `portfolioAstro` or `portfolioSanity`:
+ 
+- `npm run format` – Format files with Biome.
+- `npm run lint` – Run Biome linter.
+- `npm run check` – Run both and apply safe fixes.
+ 
+### Stylelint
+Run from `portfolioAstro`:
+ 
+- `npm run lint:css` – Run Stylelint on CSS, SCSS, and Astro files.
+- `npm run lint:css:fix` – Run Stylelint and automatically fix issues.
 
 ---
 
