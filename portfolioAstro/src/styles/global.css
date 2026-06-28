@@ -21,6 +21,7 @@
 html {
   font-size: 14px;
   color: var(--black);
+  background-color: var(--white);
 }
 
 body {
@@ -60,7 +61,7 @@ li {
     filter: invert(1) hue-rotate(180deg);
   }
 
-  img {
+  img:not(.mono-icon) {
     filter: invert(1) hue-rotate(180deg);
   }
 

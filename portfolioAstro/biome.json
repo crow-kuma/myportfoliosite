@@ -6,13 +6,7 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": [
-      "**",
-      "!**/*.scss",
-      "!node_modules",
-      "!dist",
-      "!.astro"
-    ]
+    "includes": ["**", "!**/*.scss", "!node_modules", "!dist", "!.astro"]
   },
   "formatter": {
     "enabled": true,
@@ -29,9 +23,7 @@
     "formatter": {
       "quoteStyle": "double"
     },
-    "globals": [
-      "Astro"
-    ]
+    "globals": ["Astro"]
   },
   "assist": {
     "enabled": true,

@@ -5,7 +5,7 @@ module.exports = {
 
   rules: {
     "no-descending-specificity": null,
-    "rule-empty-line-before": null
+    "rule-empty-line-before": null,
   },
 
   ignoreFiles: ["node_modules/**", "**/*.d.ts"],
