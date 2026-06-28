@@ -4,13 +4,14 @@ interface Props {
   src: string;
   alt: string;
   label: string;
+  isMonochrome?: boolean;
 }
 
-const { href, src, alt, label } = Astro.props;
+const { href, src, alt, label, isMonochrome = false } = Astro.props;
 ---
 
 <a href={href} target="_blank" rel="noopener noreferrer" class="banner-link">
-  <img src={src} alt={alt} />
+  <img src={src} alt={alt} class={isMonochrome ? "mono-icon" : ""} />
   <span>{label}</span>
 </a>
 

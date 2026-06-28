@@ -36,6 +36,8 @@ const formattedSocial = social.map((banner) => ({
   iconUrl: banner.icon ? (urlFor(banner.icon)?.url() ?? "") : "",
 }));
 
+const monochromeNames = ["Threads", "X", "GitHub"];
+
 const illustBanners = formattedSocial.filter(
   (banner) => banner.category === "illustration",
 );
@@ -63,6 +65,7 @@ const otherBanners = formattedSocial.filter(
             src={banner.iconUrl}
             alt={banner.name}
             label={banner.name}
+            isMonochrome={monochromeNames.includes(banner.name)}
           />
         ))
       }
@@ -80,6 +83,7 @@ const otherBanners = formattedSocial.filter(
             src={banner.iconUrl}
             alt={banner.name}
             label={banner.name}
+            isMonochrome={monochromeNames.includes(banner.name)}
           />
         ))
       }
@@ -97,6 +101,7 @@ const otherBanners = formattedSocial.filter(
             src={banner.iconUrl}
             alt={banner.name}
             label={banner.name}
+            isMonochrome={monochromeNames.includes(banner.name)}
           />
         ))
       }
